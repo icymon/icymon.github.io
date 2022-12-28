@@ -22,3 +22,6 @@
 
 ### 网易云音乐
 * [网易云音乐](https://music.163.com/#/download)
+
+# 微信
+* [微信](https://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.2_amd64.deb)
