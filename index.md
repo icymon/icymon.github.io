@@ -19,6 +19,10 @@
 * [docker](itnotes/docker.md)
 * [tar命令](itnotes/tarCMDs.md)
 
+### IT 基础设施
+
+* [Ubuntu20.04安装FastDFS](itnotes/Ubuntu20.04installFastDFS.md)
+
 ### Tools
 
 * [常用工具下载](itnotes/devtools.md)
