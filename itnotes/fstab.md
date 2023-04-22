@@ -1,0 +1,1 @@
+/dev/sdba2	/home/data	defaults	0	0

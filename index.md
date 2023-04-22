@@ -18,6 +18,7 @@
 * [vsftpd](itnotes/vsftpd.md)
 * [docker](itnotes/docker.md)
 * [tar命令](itnotes/tarCMDs.md)
+* [fstab](itnotes/fstab.md)
 
 
 ### IT 基础设施
