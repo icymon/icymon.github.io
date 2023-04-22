@@ -94,15 +94,16 @@ base_path=/home/jingtai/fdfs/client
 tracker_server = 10.0.2.191:22122
 # 保存并退出
 :wq
-
-
 ```
 
 
 #### 测试上传文件
 * 启动命令
+``` shell
 fdfs_trackerd /etc/fdfs/tracker.conf start
 fdfs_storaged /etc/fdfs/storage.conf start
+```
+
 * 第一个命令：
 ``` shell
 fdfs_test fdfs_test /etc/fdfs/client.conf upload abc.jpg
@@ -119,7 +120,6 @@ fdfs_upload_file /etc/fdfs/client.conf abc.jpg
 #### 复制并修改fastdfs-nginx-module文件
 ``` shell
 sudo cp /home/jingtai/fastdfs_zips/fastdfs-nginx-module-1.23/src/mod_fastdfs.conf /etc/fdfs/
-
 sudo vi /etc/fdfs/mod_fastdfs.conf
 tracker_server=10.0.2.191:22122
 url_have_group_name = true
