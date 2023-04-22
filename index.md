@@ -21,7 +21,7 @@
 
 ### IT 基础设施
 
-* [Ubuntu20.04安装FastDFS](itnotes/Ubuntu20.04installFastDFS.md)
+* [Ubuntu20.04安装FastDFS](itnotes/Ubuntu20.04InstallFastDFS.md)
 
 ### Tools
 
