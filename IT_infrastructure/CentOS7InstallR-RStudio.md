@@ -3,7 +3,7 @@
 yum install gcc gcc-c++ gcc-gfortran readline-devel libXt-devel fonts-chinese tcl tcl-devel tclx tk tk-devel mesa-libGLU mesa-libGLU-devel
 yum install libpng libpng-devel libtiff libtiff-devel libjpeg-turbo libjpeg-turbo-devel cairo-devel libssl-dev httpd readline-devel libXt-devel bzip2-devel xz-devel.x86_64 libcurl-devel zlib-devel pcre2-devel glibc-headers texinfo.x86_64 texlive-pdftex-doc.noarch tex texlive-scheme-basic  -y
 yum install centos-release-scl devtoolset-10-gcc devtoolset-10-gcc-c++ devtoolset-10-gcc-gfortran wget -y
-scl enable devtoolset-10 bash 或者在/etc/profile中添加source /opt/rh/devtoolset-10/enable
+scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/devtoolset-10/enable
 ```
 【下载源代码解压编译安装】
 ``` shell
@@ -34,3 +34,7 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 wget https://download2.rstudio.org/server/centos7/x86_64/rstudio-server-rhel-2023.03.0-386-x86_64.rpm
 sudo yum install rstudio-server-rhel-2023.03.0-386-x86_64.rpm
 ```
+
+【登录】
+* 默认端口为8787，需要防火墙放行
+* 登录用户名密码为Linux用户名密码
