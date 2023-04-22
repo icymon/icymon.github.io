@@ -14,7 +14,9 @@ yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl-devel libeven
 * 总共如下几个包
 fastdfs-6.9.4.tar.gz  fastdfs-nginx-module-1.23.tar.gz  libfastcommon-1.0.66.tar.gz  libserverframe-1.1.25.tar.gz  nginx-1.24.0.tar.gz
 
->> https://github.com/happyfish100
+* [fastdfs系列包](https://github.com/happyfish100)
+
+* [Nginx下载页面](https://nginx.org/en/download.html)
 
 ## 编译安装
 ### 解压源码包
