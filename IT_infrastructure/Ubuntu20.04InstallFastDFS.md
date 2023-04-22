@@ -126,6 +126,9 @@ url_have_group_name = true
 store_path0=/home/jingtai/fdfs/storage
 ```
 #### 复制fastdfs配置文件
+
+* 必要，否则可能会404
+
 ``` shell
 cp /home/jingtai/fastdfs_zips/fastdfs-6.9.4/conf/http.conf /etc/fdfs/
 cp /home/jingtai/fastdfs_zips/fastdfs-6.9.4/conf/mime.types /etc/fdfs/
@@ -181,3 +184,5 @@ ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
 ```
 user root root;
 ```
+
+* 这里牵扯到另外一个细节，tracker、storage、client、nginx等配置文件中的端口需要保持一致，tracker、storage、client中配置项为http.server_port
