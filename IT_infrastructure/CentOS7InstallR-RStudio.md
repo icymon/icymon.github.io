@@ -16,7 +16,7 @@ cp doc/NEWS.rds NEWS.2.rds
 cp doc/NEWS.rds NEWS.2.rds
 make install
 ln -s /usr/local/software/R4/bin/R /usr/local/bin/R
- yum install libxml2 libxml2-devel -y
+yum install libxml2 libxml2-devel -y
 install.packages("devtools") 
 install.packages("xml2")
 install.packages("gridtext")
