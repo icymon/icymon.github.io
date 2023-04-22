@@ -6,8 +6,8 @@ apt install -y gcc automake autoconf libtool make
 ```
 ## centos 安装编译环境
 ``` shell
+# 后面安装nginx也会用到
 yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl-devel libevent make automake autoconf libtool wget vim git -y
-
 ```
 ## 下载源码包
 
@@ -131,11 +131,15 @@ cp /home/jingtai/fastdfs_zips/fastdfs-6.9.4/conf/mime.types /etc/fdfs/
 ### 安装Nginx
 
 #### 安装编译工具
->> centos环境：yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl-devel
+
+> centos环境：yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl-devel
+
 ``` shell
 sudo apt-get install libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev 
 ```
+
 #### 编译安装
+
 ``` shell
 # 切换至 nginx 的解压目录
 cd /usr/local/src/nginx-1.18.0
@@ -160,6 +164,10 @@ location ~/group[0-9]/ {
 
 此时客户端上传图片以后得到文件名为：group1/M00/00/00/wKgKZl9tkTCAJAanAADhaCZ_RF0495.jpg
 浏览器访问：http://10.0.2.191/group1/M00/00/00/wKgKZl9tkTCAJAanAADhaCZ_RF0495.jpg
+
+### 多节点配置（参考）
+
+[参考](Ubuntu20.04InstallFastDFS_MultiNode.md)
 
 ### 异常处理关键字参考（按照上述版本步骤不会出现如下异常）
 ``` shell
