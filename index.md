@@ -32,7 +32,7 @@
 ### IT 常见问题
 * [debian用清华源出现证书错误解决方法](IT_FAQ/debian用清华源出现证书错误解决方法.md)
 * [Server unexpectedly closed network connection的解决](IT_FAQ/Server unexpectedly closed network connection的解决.md)
-* [Ubuntu20.04访问不了github的问题](Ubuntu20.04访问不了github的问题.md)
+* [Ubuntu20.04访问不了github的问题](IT_FAQ/Ubuntu20.04访问不了github的问题.md)
 * [Linux之vi编辑模式下Backspace无法退格删除和上下左右出现字母问题解决](IT_FAQ/Linux之vi编辑模式下Backspace无法退格删除和上下左右出现字母问题解决.md)
 
 
