@@ -1,7 +1,9 @@
 Ubuntu20.04访问不了github的问题
->> 查询 github.com、github.global.ssl.fastly.net、assets-cdn.github.com、raw.githubusercontent.com的IP地址。
-写入/etc/hosts
+
+> 查询 github.com、github.global.ssl.fastly.net、assets-cdn.github.com、raw.githubusercontent.com的IP地址,写入/etc/hosts。
+
 * 查询地址：https://www.ipaddress.com/
+
 ``` shell
 10.181.255.21 github.com
 140.82.114.4 github.com
