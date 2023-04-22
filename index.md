@@ -34,6 +34,7 @@
 * [Server unexpectedly closed network connection的解决](IT_FAQ/Server unexpectedly closed network connection的解决.md)
 * [Ubuntu20.04访问不了github的问题](IT_FAQ/Ubuntu20.04访问不了github的问题.md)
 * [Linux之vi编辑模式下Backspace无法退格删除和上下左右出现字母问题解决](IT_FAQ/Linux之vi编辑模式下Backspace无法退格删除和上下左右出现字母问题解决.md)
+* [使用U盘安装银河麒麟服务器操作系统V10SP2出现_设置基础软件仓库时出错_报错导致无法继续安装的解决方法.md](IT_FAQ/使用U盘安装银河麒麟服务器操作系统V10SP2出现_设置基础软件仓库时出错_报错导致无法继续安装的解决方法.md)
 
 
 
