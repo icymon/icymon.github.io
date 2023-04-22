@@ -26,7 +26,7 @@
 * [CentOS7InstallR-RStudio](IT_infrastructure/CentOS7InstallR-RStudio.md)
 * [Ubuntu20.04安装ROS、unitree_ros](IT_infrastructure/Ubuntu20.04Install_unitree_ros.md)
 * [CentOS7安装MySQL8](IT_infrastructure/CentOS7InstallMySQL8.md)
-* [CentOS7安装MySQL8](IT_infrastructure/VMware安装增强工具.md)
+* [VMware安装增强工具](IT_infrastructure/VMware安装增强工具.md)
 
 ### IT 常见问题
 
