@@ -8,7 +8,7 @@
 
 1、在安装引导界面，将光标移动到“Install Kylin Linux Advanced Server V10”选项，然后按下Tab键进入启动参数修改页面。
 
-2、在启动参数末尾加上 ```` inst.repo=hd:LABEL=xxxx ```，其中"xxxx"应与原有参数inst.stage2=hd:LABEL=后面的值一致，例如此处的KYLIN-SERVE。
+2、在启动参数末尾加上 ``` inst.repo=hd:LABEL=xxxx ```，其中"xxxx"应与原有参数inst.stage2=hd:LABEL=后面的值一致，例如此处的KYLIN-SERVE。
 
 3、确认修改正确后，按回车键进入系统安装界面，我们发现安装源还是报错“设置基础软件仓库时出错”，这是由于默认将/run/install/repo挂载为rw，需要切换到命令行模式重新挂载为ro，步骤如下：
 
