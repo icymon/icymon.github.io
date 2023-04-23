@@ -4,18 +4,16 @@
 * [地图](http://www.gditu.net/)
 * [必应](https://cn.bing.com/)
 
-### CMDs
-|  |  |  |   |
+### CMDs 
 
-| :----: | :----: | :----: | :----: |
+||||
+|:---:|:---:|:---:|
+| [MySQL ](itnotes/MySQL.md) | [Oracle](itnotes/Oracle.md) | [docker](itnotes/docker.md) |
+| [Python](itnotes/Python.md) | [firewall-cmd](itnotes/FirewallCmd.md) | [git](itnotes/GitCmds.md) |
+| [ffmpeg](itnotes/ffmpeg.md) | [putty](itnotes/putty.md) | [vsftpd](itnotes/vsftpd.md) |
+| [fstab](itnotes/fstab.md) |  [tar](itnotes/tarCMDs.md) | [wget](itnotes/wget.md) |
+| [sed](itnotes/sed.md) |  [awk](itnotes/awk.md) | [go](itnotes/go.md) |
 
-|  [MySQL ](itnotes/MySQL.md) | [Oracle](itnotes/Oracle.md) | [firewall-cmd](itnotes/FirewallCmd.md) | [docker](itnotes/docker.md)|
-
-| [Python](itnotes/Python.md) | [git](itnotes/GitCmds.md) | [vim](itnotes/VimCmds.md) | [putty](itnotes/putty.md)|
-
-| [ffmpeg](itnotes/ffmpeg.md) | [vsftpd](itnotes/vsftpd.md) | [tar](itnotes/tarCMDs.md) | [fstab](itnotes/fstab.md)|
-
-<table><tr><th>Tables</th><th>Are</th><th>Cool</th></tr><tr><td>col 1 is</td><td>left-aligned</td><td>$1600</td></tr><tr><td>col 2 is</td><td>centered</td><td>$12</td></tr><tr><td>col 3 is</td><td>right-aligned</td><td>$1</td></tr></table>
 
 
 ### IT 基础设施
