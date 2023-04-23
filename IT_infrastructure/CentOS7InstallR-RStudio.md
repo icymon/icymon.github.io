@@ -12,8 +12,8 @@ mkdir /usr/local/software/R4 -p
 ./configure --enable-R-shlib=yes --with-libpng-x=no --with-tcltk --prefix=/usr/local/software/R4
 make
 # 需要复制下文件，解决文件缺失问题，否则会有编译问题
-cp doc/NEWS.rds NEWS.2.rds
-cp doc/NEWS.rds NEWS.2.rds
+cp doc/NEWS.rds doc/NEWS.2.rds
+cp doc/NEWS.rds doc/NEWS.3.rds
 make install
 ln -s /usr/local/software/R4/bin/R /usr/local/bin/R
 yum install libxml2 libxml2-devel -y

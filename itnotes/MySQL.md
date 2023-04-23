@@ -25,3 +25,6 @@ mysql -uroot -p -h 192.168.0.1 -P 123 --default-character-set=utf8mb4  DBNAME < 
 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
 ```
 * 重启MySQL
+
+### MySQL 优化
+[MySQL 故障诊断：MySQL 占用 CPU 过高问题定位及优化](https://www.51cto.com/article/703691.html)
