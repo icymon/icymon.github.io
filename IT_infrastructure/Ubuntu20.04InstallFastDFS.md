@@ -106,7 +106,7 @@ fdfs_storaged /etc/fdfs/storage.conf start
 
 * 第一个命令：
 ``` shell
-fdfs_test fdfs_test /etc/fdfs/client.conf upload abc.jpg
+fdfs_test /etc/fdfs/client.conf upload abc.jpg
 ```
 
 * 第二个命令：

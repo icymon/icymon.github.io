@@ -7,9 +7,9 @@
 ### CMDs
 |  |  |  |   |
 | :----: | :----: | :----: | :----: |
-|  [MySQL ](itnotes/MySQL.md) |[Oracle](itnotes/Oracle.md)|[firewall-cmd](itnotes/FirewallCmd.md)|[docker](itnotes/docker.md)|
-|[Python](itnotes/Python.md)|[git](itnotes/GitCmds.md)|[vim](itnotes/VimCmds.md)|[putty](itnotes/putty.md)|
-|[ffmpeg](itnotes/ffmpeg.md)|[vsftpd](itnotes/vsftpd.md)|[tar](itnotes/tarCMDs.md)|[fstab](itnotes/fstab.md)|
+|  [MySQL ](itnotes/MySQL.md) | [Oracle](itnotes/Oracle.md) | [firewall-cmd](itnotes/FirewallCmd.md) | [docker](itnotes/docker.md)|
+| [Python](itnotes/Python.md) | [git](itnotes/GitCmds.md) | [vim](itnotes/VimCmds.md) | [putty](itnotes/putty.md)|
+| [ffmpeg](itnotes/ffmpeg.md) | [vsftpd](itnotes/vsftpd.md) | [tar](itnotes/tarCMDs.md) | [fstab](itnotes/fstab.md)|
 
 
 ### IT 基础设施
