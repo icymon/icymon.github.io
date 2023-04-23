@@ -5,20 +5,11 @@
 * [必应](https://cn.bing.com/)
 
 ### CMDs
-* [Ubuntu22.04 初始化配置](itnotes/ubuntu2204init.md)
-* [Debian 11 初始化配置](itnotes/debian11init.md)
-* [MySQL命令](itnotes/MySQL.md)
-* [Oracle](itnotes/Oracle.md)
-* [Python](itnotes/Python.md)
-* [git命令](itnotes/GitCmds.md)
-* [vim命令](itnotes/VimCmds.md)
-* [putty设置](itnotes/putty.md)
-* [ffmpeg命令](itnotes/ffmpeg.md)
-* [Linux firewall-cmd](itnotes/FirewallCmd.md)
-* [vsftpd](itnotes/vsftpd.md)
-* [docker](itnotes/docker.md)
-* [tar命令](itnotes/tarCMDs.md)
-* [fstab](itnotes/fstab.md)
+|  |  |  |   |
+| :----: | :----: | :----: | :----: |
+|  [MySQL ](itnotes/MySQL.md) |[Oracle](itnotes/Oracle.md)|[firewall-cmd](itnotes/FirewallCmd.md)|[docker](itnotes/docker.md)|
+|[Python](itnotes/Python.md)|[git](itnotes/GitCmds.md)|[vim](itnotes/VimCmds.md)|[putty](itnotes/putty.md)|
+|[ffmpeg](itnotes/ffmpeg.md)|[vsftpd](itnotes/vsftpd.md)|[tar](itnotes/tarCMDs.md)|[fstab](itnotes/fstab.md)|
 
 
 ### IT 基础设施
@@ -28,6 +19,10 @@
 * [Ubuntu20.04安装ROS、unitree_ros](IT_infrastructure/Ubuntu20.04Install_unitree_ros.md)
 * [CentOS7安装MySQL8](IT_infrastructure/CentOS7InstallMySQL8.md)
 * [VMware安装增强工具](IT_infrastructure/VMware安装增强工具.md)
+* [Ubuntu22.04 初始化配置](itnotes/ubuntu2204init.md)
+* [Debian 11 初始化配置](itnotes/debian11init.md)
+
+
 
 ### IT 常见问题
 * [debian用清华源出现证书错误解决方法](IT_FAQ/debian用清华源出现证书错误解决方法.md)
