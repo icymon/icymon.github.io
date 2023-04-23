@@ -6,7 +6,7 @@
 
 ### CMDs 
 
-||||
+
 |:---:|:---:|:---:|
 | [MySQL ](itnotes/MySQL.md) | [Oracle](itnotes/Oracle.md) | [docker](itnotes/docker.md) |
 | [Python](itnotes/Python.md) | [firewall-cmd](itnotes/FirewallCmd.md) | [git](itnotes/GitCmds.md) |
