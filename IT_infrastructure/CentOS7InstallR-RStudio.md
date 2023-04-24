@@ -3,6 +3,8 @@
 yum install gcc gcc-c++ gcc-gfortran readline-devel libXt-devel fonts-chinese tcl tcl-devel tclx tk tk-devel mesa-libGLU mesa-libGLU-devel
 yum install libpng libpng-devel libtiff libtiff-devel libjpeg-turbo libjpeg-turbo-devel cairo-devel libssl-dev httpd readline-devel libXt-devel bzip2-devel xz-devel.x86_64 libcurl-devel zlib-devel pcre2-devel glibc-headers texinfo.x86_64 texlive-pdftex-doc.noarch tex texlive-scheme-basic  -y
 yum install centos-release-scl devtoolset-10-gcc devtoolset-10-gcc-c++ devtoolset-10-gcc-gfortran wget -y
+# yum install centos-release-scl devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-gcc-gfortran wget -y
+# yum remove devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-gcc-gfortran -y
 scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/devtoolset-10/enable
 ```
 【下载源代码解压编译安装】
