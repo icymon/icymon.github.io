@@ -137,13 +137,13 @@ tmpfs                   tmpfs     2.9G     0  2.9G    0% /sys/fs/cgroup
 /dev/sda1               xfs      1014M  152M  863M   15% /boot
 tmpfs                   tmpfs     581M     0  581M    0% /run/user/0
 ```
-* lvextend 扩展后只是扩展了lv的大小，而此时文件系统并未感知到，所有还需要使用xfs_growfs、resize2fs等命令来扩展文件系统，xfs_growfs命令是扩展xfs文件系统，resize2fs是扩展ext4文件系统。
+* lvextend 扩展后只是扩展了lv的大小，而此时文件系统并未感知到，所有还需要使用xfs_growfs、resize2fs等命令来扩展文件系统，**xfs_growfs命令是扩展xfs文件系统，resize2fs是扩展ext4文件系统**。
 
 ---
 
 #### 格式化LV(挂载分区，与扩容不同)
 
-* 注意： ext4可以lvm缩容、扩容；xfs只能lvm扩容，xfs如果需要缩容，需要先格式化。
+* **注意： ext4可以lvm缩容、扩容；xfs只能lvm扩容，xfs如果需要缩容，需要先格式化**。
 
 ``` shell
 $mkfs.ext4 /dev/vg_centos_01/lv_centos_01
