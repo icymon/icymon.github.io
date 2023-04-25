@@ -74,12 +74,12 @@ $lvs
   lv_centos_01 vg_centos_01 -wi-a----- 500.00m
 ```
 
-****************************************
+---
 
 #### lvextend 扩容centos（centos是LV名称）
 
-* 首先，确定一下是否有可用的扩容空间，因为空间是从VG里面创建的，并且LV不能跨VG扩容
-* lvextend -L +100M  或者lvextend -l +100%free  这里-L -l 需要注意大小写
+* 首先，确定一下是否有可用的扩容空间，因为空间是从VG里面创建的，并且LV不能跨VG扩容。
+* lvextend -L +100M  或者lvextend -l +100%free  这里-L -l 需要注意大小写。
 
 ``` shell
 # 删除刚才创建的LV，然后再删除VG，将空间腾出来
@@ -91,6 +91,7 @@ Do you really want to remove active logical volume vg_centos_01/lv_centos_01? [y
 # 改为vgremove
 $ vgreduce vg_centos_01 /dev/sdb
   Can't remove final physical volume "/dev/sdb" from volume group "vg_centos_01"
+
 $vgremove vg_centos_01
   Volume group "vg_centos_01" successfully removed
 # 扩容卷组
@@ -136,7 +137,9 @@ tmpfs                   tmpfs     2.9G     0  2.9G    0% /sys/fs/cgroup
 tmpfs                   tmpfs     581M     0  581M    0% /run/user/0
 ```
 * lvextend 扩展后只是扩展了lv的大小，而此时文件系统并未感知到，所有还需要使用xfs_growfs、resize2fs等命令来扩展文件系统，xfs_growfs命令是扩展xfs文件系统，resize2fs是扩展ext4文件系统。
-****************************************
+
+---
+
 #### 格式化LV(挂载分区，与扩容不同)
 
 * 注意： ext4可以lvm缩容、扩容；xfs只能lvm扩容，xfs如果需要缩容，需要先格式化。
@@ -202,7 +205,7 @@ df -Th
 ```
 
 
-
+---
 
 ### 参考资料
 
