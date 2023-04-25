@@ -115,5 +115,3 @@ Qt will be installed into '/usr/local/Qt-5.12.3'.
 Prior to reconfiguration, make sure you remove any leftovers from
 the previous build.
 ```
-
-yum install centos-release-scl
