@@ -92,7 +92,7 @@ Do you really want to remove active logical volume vg_centos_01/lv_centos_01? [y
 # 若使用vgreduce命令移除会报错，不能删除LVM卷组中剩余的最后一个物理卷（ Can't remove final physical volume "/dev/sdb" from volume group "vg_centos_01"）
 # 改为vgremove
 $ vgreduce vg_centos_01 /dev/sdb
-  Can't remove final physical volume "/dev/sdb" from volume group "vg_centos_01"
+  Can\'t remove final physical volume "/dev/sdb" from volume group "vg_centos_01"
 $vgremove vg_centos_01
   Volume group "vg_centos_01" successfully removed
 # 扩容卷组
