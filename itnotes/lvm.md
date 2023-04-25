@@ -7,6 +7,8 @@ yum install -y lvm2
 
 ### 扩容和挂载分区
 
+* 扩容前做好备份、快照！
+
 #### 查看磁盘情况
 ``` shell
 $fdisk -l
@@ -91,7 +93,6 @@ Do you really want to remove active logical volume vg_centos_01/lv_centos_01? [y
 # 改为vgremove
 $ vgreduce vg_centos_01 /dev/sdb
   Can't remove final physical volume "/dev/sdb" from volume group "vg_centos_01"
-
 $vgremove vg_centos_01
   Volume group "vg_centos_01" successfully removed
 # 扩容卷组
