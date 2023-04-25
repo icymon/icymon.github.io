@@ -1,6 +1,7 @@
 # centos7安装Ot5.12.3
 
 ## 图形界面安装
+``` shell
 wget https://download.qt.io/archive/qt/5.12/5.12.3/qt-opensource-linux-x64-5.12.3.run
 yum groupinstall "GNOME Desktop"
 sudo yum install wget mesa-libGL-devel -y
@@ -15,7 +16,7 @@ sudo systemctl start xrdp
 sudo systemctl enable xrdp 
 sudo systemctl restart xrdp
 sudo firewall-cmd --permanent --zone=public --add-port=3389/tcp
-# 安装linuxdeployqt
+# 安装linuxdeployqt，新版本需要依赖更高版本的gcc。
 nuxdeployqt-continuous-x86_64.AppImage linuxdeployqt
 chmod +x linuxdeployqt
 mv linuxdeployqt /usr/local/bin/ 
@@ -23,9 +24,9 @@ mv linuxdeployqt /usr/local/bin/
 vi /etc/profile
 export PATH="/opt/Qt5.12.3/5.12.3/gcc_64/bin:$PATH"
 export PATH="/opt/Qt5.12.3/Tools/QtCreator/bin/:$PATH"
+```
 
-
-
+* [CentOS7升级gcc](CentOS7升级gcc.md)
 
 
 
