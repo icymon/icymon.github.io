@@ -19,12 +19,19 @@ yum install -y mysql-community-server --nogpgcheck # yum安装的时候遇到公
 # 启动MySQL
 systemctl start mysqld
 systemctl status mysqld
-# 获取默认root密码
+# 获取默认root临时密码
 grep 'temporary password' /var/log/mysqld.log
-mysql -uroot -p
-> SET PASSWORD = PASSWORD('Admin123!');
-> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Admin123!' WITH GRANT OPTION;
-> flush privileges;
+```
+
+* 使用临时密码修改root密码，否则MySQL不允许进一步操作
+
+``` sql
+SET PASSWORD = PASSWORD('Admin123!');
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'Admin123!' WITH GRANT OPTION;
+flush privileges;
+```
+
+``` shell
 # 防火墙放行端口
 sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent
 sudo firewall-cmd --reload
