@@ -23,7 +23,19 @@ mv linuxdeployqt /usr/local/bin/
 vi /etc/profile
 export PATH="/opt/Qt5.12.3/5.12.3/gcc_64/bin:$PATH"
 export PATH="/opt/Qt5.12.3/Tools/QtCreator/bin/:$PATH"
-## 更换软件源
+
+
+
+
+
+
+
+
+
+
+
+## 无界面安装（未成功）
+### 更换软件源
 
 ``` shell
 # 对于 CentOS 7
@@ -39,7 +51,7 @@ sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
          /etc/yum.repos.d/CentOS-*.repo
 ```
 
-## 执行安装
+### 执行安装
 ``` shell
 yum groupinstall "Development Tools"
 # 失效：sudo yum groupinstall "C Development Tools and Libraries"
@@ -56,8 +68,8 @@ export PATH=/usr/local/qt-5.12.3/bin:$PATH
 source /etc/profile
 ```
 
-## 示例测试
-### C++ 源码
+### 示例测试
+#### C++ 源码
 ``` shell
 #include <QtGui/QApplication> 
 #include <QLabel> 
@@ -71,7 +83,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-### 编译
+#### 编译
 > 参考：https://www.cnblogs.com/zhaodehua/articles/9603607.html
 ``` shell
 qmake -v    #查看qmake的版本号(个人直接用此命令判断qt是否安装)

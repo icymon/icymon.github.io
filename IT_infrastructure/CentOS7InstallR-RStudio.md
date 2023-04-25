@@ -9,7 +9,8 @@ scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/dev
 ```
 【下载源代码解压编译安装】
 ``` shell
-wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.0.0.tar.gz --no-check-certificate
+# wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.0.0.tar.gz --no-check-certificate
+wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.3.0.tar.gz --no-check-certificate
 mkdir /usr/local/software/R4 -p
 ./configure --enable-R-shlib=yes --with-libpng-x=no --with-tcltk --prefix=/usr/local/software/R4
 make
@@ -17,6 +18,7 @@ make
 cp doc/NEWS.rds doc/NEWS.2.rds
 cp doc/NEWS.rds doc/NEWS.3.rds
 make install
+ln -s /usr/local/software/R4/bin/R /usr/bin/R
 ln -s /usr/local/software/R4/bin/R /usr/local/bin/R
 yum install libxml2 libxml2-devel -y
 install.packages("devtools") 
