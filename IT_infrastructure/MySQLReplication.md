@@ -90,7 +90,7 @@ mysql> show master status;
 | mysql-bin.000002 |     1642 | jingtai      | mysql,sys,information_schema,performance_schema |                   |
 +------------------+----------+--------------+-------------------------------------------------+-------------------+
 1 row in set (0.00 sec)
-mysql> show master status\G
+mysql> show master status\G -- 注意这一句没有分号
 *************************** 1. row ***************************
              File: mysql-bin.000002
          Position: 1907
@@ -132,6 +132,7 @@ max_binlog_size = 100m
 binlog_cache_size = 4m
 #最大binlog缓存大小
 max_binlog_cache_size= 512m
+# 设置从库只读。此时若插入数据，报错：The MySQL server is running with the --read-only option so it cannot execute this statement
 read_only = 1
 #################################################################
 ```
@@ -141,7 +142,7 @@ service mysqld restart
 ``` sql
 change master to master_host='192.168.1.180',master_user='jingtais',master_password='Admin123!',master_log_file='mysql-bin.000002',master_log_pos=3247;
 start slave;
-show slave status\G
+show slave status\G -- 注意这一句没有分号
 ```
 
 ---
