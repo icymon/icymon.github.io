@@ -14,7 +14,7 @@ conda install pkg-config jags
 
 * 安装完注销登录，用户重登再执行```install.packages("rjags")```
 
-# canda添加清华的源
+# conda添加清华的源
 
 ``` shell
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
