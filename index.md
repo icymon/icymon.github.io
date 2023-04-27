@@ -47,6 +47,7 @@
 ### Tools
 
 * [常用工具下载](itnotes/devtools.md)
+* [Linux各类发行版及软件源](itnotes/LinuxIsos.md)
 * [颜色格式转换](https://tools.fun/color.html)
 * [百度拾取坐标系统](https://api.map.baidu.com/lbsapi/getpoint/index.html)
 * [高德拾取坐标系统](https://lbs.amap.com/console/show/picker)
