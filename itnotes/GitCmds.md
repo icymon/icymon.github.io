@@ -44,6 +44,20 @@ git config --global credential.helper store
 git credential-manager uninstall
 ```
 
+``` shell
+# 第一次免密拉取代码
+ git config --global user.email "idingjinhu@outlook.com"
+ git config --global user.name "iding"
+ git init
+ git remote add origin https://github.com/icymon/icymon.github.io.git
+ git config --global --unset http.proxy
+ git config --global --unset https.proxy
+ git pull origin main
+ git config --global http.sslVerify false
+ git pull origin main
+
+```
+
 
 ### 免密登录
 
