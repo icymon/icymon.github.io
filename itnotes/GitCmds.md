@@ -44,20 +44,7 @@ git config --global credential.helper store
 git credential-manager uninstall
 ```
 
-``` shell
-# 第一次免密拉取代码
- git config --global user.email "xxx@xxx.com"
- git config --global user.name "xxx"
- git init
- git remote add origin https://github.com/icymon/icymon.github.io.git
- git config --global --unset http.proxy
- git config --global --unset https.proxy
- git config --global http.sslVerify false
- git pull origin main
- 
-# commit时sign with a code，按照操作即可
 
-```
 
 
 ### 免密登录
@@ -81,6 +68,21 @@ git remote  set-url origin [ssh地址]
 提交前确认下就行
 ``` shell
 git push -u origin main
+```
+
+``` shell
+# 第一次免密拉取代码
+ git config --global user.email "xxx@xxx.com"
+ git config --global user.name "xxx"
+ git init
+ git remote add origin https://github.com/icymon/icymon.github.io.git
+ git config --global --unset http.proxy
+ git config --global --unset https.proxy
+ git config --global http.sslVerify false
+ git pull origin main
+ 
+# commit时sign with a code，按照操作即可
+
 ```
 
 ### [【杂谈】github page编写md文件，渲染时直接显示文件内容，处理办法](https://blog.csdn.net/C2681595858/article/details/88066775)
