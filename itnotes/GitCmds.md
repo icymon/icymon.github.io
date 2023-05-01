@@ -46,8 +46,8 @@ git credential-manager uninstall
 
 ``` shell
 # 第一次免密拉取代码
- git config --global user.email "idingjinhu@outlook.com"
- git config --global user.name "iding"
+ git config --global user.email "xxx@xxx.com"
+ git config --global user.name "xxx"
  git init
  git remote add origin https://github.com/icymon/icymon.github.io.git
  git config --global --unset http.proxy
