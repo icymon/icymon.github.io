@@ -52,9 +52,10 @@ git credential-manager uninstall
  git remote add origin https://github.com/icymon/icymon.github.io.git
  git config --global --unset http.proxy
  git config --global --unset https.proxy
- git pull origin main
  git config --global http.sslVerify false
  git pull origin main
+ 
+# commit时sign with a code，按照操作即可
 
 ```
 
