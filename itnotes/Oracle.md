@@ -1,6 +1,6 @@
 ## Linux下静默安装Oracle
 
-* [Linux下静默安装Oracle](oracle/installoracle.md)
+* [Linux下安装Oracle](installOracleOnCentOS7.md)
 
 ## 表空间管理
 * 创建和删除表空间
