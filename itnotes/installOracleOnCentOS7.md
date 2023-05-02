@@ -23,17 +23,17 @@ yum -y install lsof
 timedatectl set-timezone Asia/Shanghai
 
 #add user and group(nologin)
-groupadd -g 1050 rooten
-useradd -u 1050 -g 1050 rooten -s /sbin/nologin
+groupadd -g 1050 abcuser
+useradd -u 1050 -g 1050 abcuser -s /sbin/nologin
 
 #create new directory 
-mkdir /etc/rooten
-chown -R rooten:rooten /etc/rooten
-chmod 755 /etc/rooten
+mkdir /etc/abcuser
+chown -R abcuser:abcuser /etc/abcuser
+chmod 755 /etc/abcuser
 
-mkdir /var/rooten
-chown -R rooten:rooten /var/rooten
-chmod 744 /var/rooten
+mkdir /var/abcuser
+chown -R abcuser:abcuser /var/abcuser
+chmod 744 /var/abcuser
 
 # setting system maxopenfiles
 #echo "fs.file-max=200000"                            >> /etc/sysctl.conf
@@ -52,7 +52,7 @@ echo "*              hard       nofile           200000" >> /etc/security/limits
 ``` shell
 
 #!/bin/bash
-# Rooten.com.cn 2016© Dingjinhu
+# abcuser.com.cn 2016© Dingjinhu
 # sed -i '$a bye' ab
 # sed 's/'h'/'hello'/g' ab
 ######oracle setup configuration##################################
