@@ -5,6 +5,7 @@
 wget https://download.qt.io/archive/qt/5.12/5.12.3/qt-opensource-linux-x64-5.12.3.run
 yum groupinstall "GNOME Desktop"
 sudo yum install wget mesa-libGL-devel -y
+# sudo apt install libgl1-mesa-dev libgl1* gcc-multilib g++-multilib -y
 startx
 systemctl get-default
 systemctl set-default graphical.target
