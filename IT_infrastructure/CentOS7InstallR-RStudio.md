@@ -8,6 +8,15 @@ yum -y install texlive texlive-latex texlive-xetex texlive-collection-latex texl
 # yum remove devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-gcc-gfortran -y
 scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/devtoolset-10/enable
 ```
+【安装Java（安装R前提）】
+``` shell
+wget https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.rpm
+# 用文本编辑器打开/etc/profile 在profile文件末尾加入：
+export JAVA_HOME=/usr/lib/jvm/jdk-20-oracle-x64
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+```
+
 【下载源代码解压编译安装】
 ``` shell
 # wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.0.0.tar.gz --no-check-certificate
@@ -15,8 +24,9 @@ wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.3.0.tar.gz --no-
 mkdir /usr/local/software/R4 -p
 ./configure --enable-R-shlib=yes --with-tcltk --prefix=/usr/local/software/R4
 make
-# 需要复制下文件，解决文件缺失问题，否则会有编译问题
-
+# 需要复制下文件，解决文件缺失问题，否则会有编译问题，如果安装了texlive，就不会出现
+# cp doc/NEWS.rds doc/NEWS.2.rds
+# cp doc/NEWS.rds doc/NEWS.3.rds
 make install
 ln -s /usr/local/software/R4/bin/R /usr/bin/R
 ln -s /usr/local/software/R4/bin/R /usr/local/bin/R
@@ -25,14 +35,7 @@ install.packages("devtools")
 install.packages("xml2")
 install.packages("gridtext")
 ```
-【安装Java】
-``` shell
-wget https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.rpm
-# 用文本编辑器打开/etc/profile 在profile文件末尾加入：
-export JAVA_HOME=/usr/lib/jvm/jdk-20-oracle-x64
-export PATH=$JAVA_HOME/bin:$PATH
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-```
+
 【安装Rstudio】
 ``` shell
 wget https://download2.rstudio.org/server/centos7/x86_64/rstudio-server-rhel-2023.03.0-386-x86_64.rpm
