@@ -10,6 +10,11 @@ conda create -n rjags_env -c conda-forge r-rjags
 conda activate rjags_env
 conda config --env --add channels conda-forge
 conda install pkg-config jags
+conda info -e # 查看已安装环境
+conda env list # 查看已安装环境
+# 取消激活和删除
+source deactivate env_name
+conda remove -n env_name --all
 ```
 
 * 安装完注销登录，用户重登再执行```install.packages("rjags")```
