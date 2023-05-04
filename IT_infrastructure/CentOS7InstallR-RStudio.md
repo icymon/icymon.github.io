@@ -3,6 +3,7 @@
 yum install gcc gcc-c++ gcc-gfortran readline-devel libXt-devel fonts-chinese tcl tcl-devel tclx tk tk-devel mesa-libGLU mesa-libGLU-devel
 yum install libpng libpng-devel libtiff libtiff-devel libjpeg-turbo libjpeg-turbo-devel cairo-devel libssl-dev httpd readline-devel libXt-devel bzip2-devel xz-devel.x86_64 libcurl-devel zlib-devel pcre2-devel glibc-headers texinfo.x86_64 texlive-pdftex-doc.noarch tex texlive-scheme-basic  -y
 yum install centos-release-scl devtoolset-10-gcc devtoolset-10-gcc-c++ devtoolset-10-gcc-gfortran wget -y
+yum -y install texlive texlive-latex texlive-xetex texlive-collection-latex texlive-collection-latexrecommended texlive-xetex-def texlive-collection-xetex texlive-collection-latexextra
 # yum install centos-release-scl devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-gcc-gfortran wget -y
 # yum remove devtoolset-11-gcc devtoolset-11-gcc-c++ devtoolset-11-gcc-gfortran -y
 scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/devtoolset-10/enable
@@ -12,11 +13,10 @@ scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/dev
 # wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.0.0.tar.gz --no-check-certificate
 wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-4/R-4.3.0.tar.gz --no-check-certificate
 mkdir /usr/local/software/R4 -p
-./configure --enable-R-shlib=yes --with-libpng-x=no --with-tcltk --prefix=/usr/local/software/R4
+./configure --enable-R-shlib=yes --with-tcltk --prefix=/usr/local/software/R4
 make
 # 需要复制下文件，解决文件缺失问题，否则会有编译问题
-cp doc/NEWS.rds doc/NEWS.2.rds
-cp doc/NEWS.rds doc/NEWS.3.rds
+
 make install
 ln -s /usr/local/software/R4/bin/R /usr/bin/R
 ln -s /usr/local/software/R4/bin/R /usr/local/bin/R
