@@ -35,6 +35,11 @@ Tools–>option,在下面的两栏输入以下内容 网址： mirrors.neusoft.e
 
 ## Qt安装配置
 * 1、下一步直到完成安装
+
+> 参考[QT在线安装速度慢的解决办法](https://www.cnblogs.com/chaichengxun/p/17140066.html)
+
+> .\qt-xxx-windows-x86-online.exe --mirror https://mirrors.ustc.edu.cn/qtproject 
+
 * 2、打开Qtcreator， 点击工具选项，JDK自己检测到了，只需要将SDK和NDK的路径添加进去，然后SDK manager会显示你下载的SDK工具，点击确定，环境就基本配置完成了
 
 
