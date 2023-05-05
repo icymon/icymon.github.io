@@ -12,6 +12,8 @@ JAVA -version
 ## 安装SDK
 ### 1、installer_r24.4.1-windows.exe 双击安装，路径自己选择，安装完成后运行
 
+* [installer_r24.4.1-windows](https://dl.google.com/android/installer_r24.4.1-windows.exe?utm_source=androiddevtools&utm_medium=website)
+
 ### 2、安装完成后设置环境变量（系统变量）
 ``` shell
 ANDROID_SDK_HOME 
@@ -26,6 +28,8 @@ Tools–>option,在下面的两栏输入以下内容 网址： mirrors.neusoft.e
 然后点击Package–>Reload就会更新安卓的构建工具了
 
 ## NDK配置
+
+* [NDK 下载](https://developer.android.google.cn/ndk/downloads?hl=zh-cn)
 
 这个很简单，直接把下载的压缩包解压到你想放置的目录即可，在QT配置安卓设备的时候用到
 
