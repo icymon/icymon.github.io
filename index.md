@@ -19,26 +19,44 @@
 
 ### IT 基础设施
 
-* [Ubuntu20.04安装FastDFS](IT_infrastructure/Ubuntu20.04InstallFastDFS.md)
+
 * [CentOS7InstallR-RStudio](IT_infrastructure/CentOS7InstallR-RStudio.md)
+
 * [CentOS安装Jellyfin](IT_infrastructure/CentOSInstallJellyfin.md)
-* [CentOS7安装Qt5.12.3](IT_infrastructure/CentOS7安装Qt5.12.3.md)
-* [MySQL主从复制（Replication）](IT_infrastructure/MySQLReplication.md)
+
 * [CentOS7升级gcc](IT_infrastructure/CentOS7升级gcc.md)
-* [Ubuntu20.04安装ROS、unitree_ros](IT_infrastructure/Ubuntu20.04Install_unitree_ros.md)
+
 * [CentOS7安装MySQL8](IT_infrastructure/CentOS7InstallMySQL8.md)
+
+* [CentOS7安装Qt5.12.3](IT_infrastructure/CentOS7安装Qt5.12.3.md)
+
+* [Qt安卓环境搭建(Windows)](IT_infrastructure/Qt安卓环境搭建.md)
+
+* [MySQL主从复制（Replication）](IT_infrastructure/MySQLReplication.md)
+
+* [Ubuntu20.04安装ROS、unitree_ros](IT_infrastructure/Ubuntu20.04Install_unitree_ros.md)
+
+* [Ubuntu20.04安装FastDFS](IT_infrastructure/Ubuntu20.04InstallFastDFS.md)
+
 * [VMware安装增强工具](IT_infrastructure/VMware安装增强工具.md)
+
 * [Ubuntu22.04 初始化配置](itnotes/ubuntu2204init.md)
+
 * [Debian 11 初始化配置](itnotes/debian11init.md)
 
 
 
 ### IT 常见问题
 * [debian用清华源出现证书错误解决方法](IT_FAQ/debian用清华源出现证书错误解决方法.md)
+
 * [Server unexpectedly closed network connection的解决](IT_FAQ/Server unexpectedly closed network connection的解决.md)
+
 * [Ubuntu20.04访问不了github的问题](IT_FAQ/Ubuntu20.04访问不了github的问题.md)
+
 * [Linux之vi编辑模式下Backspace无法退格删除和上下左右出现字母问题解决](IT_FAQ/Linux之vi编辑模式下Backspace无法退格删除和上下左右出现字母问题解决.md)
+
 * [使用U盘安装银河麒麟服务器操作系统V10SP2出现_设置基础软件仓库时出错_报错导致无法继续安装的解决方法](IT_FAQ/使用U盘安装银河麒麟服务器操作系统V10SP2出现_设置基础软件仓库时出错_报错导致无法继续安装的解决方法.md)
+
 * [error: package or namespace load failed for 'rjags'](IT_FAQ/rjags.md)
 
 
