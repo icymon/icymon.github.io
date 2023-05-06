@@ -44,6 +44,7 @@
 
 * [Debian 11 初始化配置](itnotes/debian11init.md)
 
+* [CentOS7安装armadillo](IT_infrastructure/CentOS7安装armadillo.md)
 
 
 ### IT 常见问题
