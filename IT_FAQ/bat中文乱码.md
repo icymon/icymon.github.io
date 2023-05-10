@@ -1,7 +1,8 @@
 # bat中文乱码
 
-1、将bat文件格式改为ANSI
-2、在bat脚本中，声明：
+* 1、将bat文件格式改为ANSI
+
+* 2、在bat脚本中，声明：
 
 ```  shell
 # 代码页更改为Unicode（UTF-8）
