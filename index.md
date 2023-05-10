@@ -60,6 +60,8 @@
 
 * [error: package or namespace load failed for 'rjags'](IT_FAQ/rjags.md)
 
+* [bat中文乱码](IT_FAQ/bat中文乱码.md)
+
 
 
 

@@ -10,6 +10,8 @@ yum install blas blas-devel lapack lapack-devel -y
 ```
 ## 安装指定版本
 
+* armadillo-12.2.0.tar.xz里面的README.md文件有说明
+
 > Recommended packages to install before installing Armadillo:
 * Fedora & Red Hat: cmake, openblas-devel, lapack-devel, arpack-devel, SuperLU-devel
 * Ubuntu & Debian: cmake, libopenblas-dev, liblapack-dev, libarpack2-dev, libsuperlu-dev
