@@ -28,6 +28,7 @@ $ tar -zxvf spark-3.4.0-bin-hadoop3.tgz -C /home/hdp/
 
 ### 配置Java
 * 在.bashrc中添加环境变量
+
 ``` shell
 vi .bashrc
 export JAVA_HOME=/home/hdp/jdk1.8.0_341
@@ -137,6 +138,11 @@ worker1
 worker2
 [hdp@master tmp]$ mkdir -p /home/hdp/hadoop-3.3.5/tmp
 [hdp@master hadoop]$ vi core-site.xml
+```
+
+添加如下内容
+
+``` xml
 <configuration>
 <property>
          <name>hadoop.tmp.dir</name>
@@ -148,7 +154,15 @@ worker2
          <value>hdfs://master:20001</value>
      </property>
 </configuration>
+```
+
+``` shell
 [hdp@master hadoop]$ vi hdfs-site.xml
+```
+
+添加如下内容
+
+``` xml
 <configuration>	 
      <property>         
          <name>dfs.replication</name>         
@@ -193,14 +207,30 @@ worker2
 		<value>master:9864</value>
 	</property>
 </configuration>
+```
+
+``` shell
 [hdp@master hadoop]$ vi mapred-site.xml
+```
+
+添加如下内容
+
+``` xml
 <configuration>
     <property>
         <name>mapreduce.framework.name</name>
         <value>yarn</value>
     </property>
 </configuration>
+```
+
+``` shell
 [hdp@master hadoop]$ vi yarn-site.xml
+```
+
+添加如下内容
+
+``` xml
 <configuration>
      <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
@@ -253,8 +283,9 @@ worker2
          <value>master:8041</value>     
      </property>	 
 </configuration>
+```
 
-
+``` shell
 # 将Hadoop配置文件复制到worker1和worker2机器上
 [hdp@master hadoop]$ scp -r /home/hdp/hadoop-3.3.5/etc/hadoop hdp@worker1:/home/hdp/hadoop-3.3.5/etc/
 [hdp@master hadoop]$ scp -r /home/hdp/hadoop-3.3.5/etc/hadoop hdp@worker2:/home/hdp/hadoop-3.3.5/etc/
