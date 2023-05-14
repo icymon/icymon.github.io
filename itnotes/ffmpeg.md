@@ -1,10 +1,15 @@
-## ffmpeg 命令
-> ffmpeg -i a.webm -b:v 2000k -bufsize 2000k -maxrate 2500k output.mp4
+# ffmpeg 命令
+## 转码
+``` shell
+ffmpeg -i a.webm -b:v 2000k -bufsize 2000k -maxrate 2500k output.mp4
 
-> ffmpeg -i a.webm output.mp4
+ffmpeg -i a.webm output.mp4
+```
+
+## 添加水印
 
 ``` shell
-ffmpeg -i input.mp4 -vf "drawtext=fontfile=simhei.ttf: text='watermarker':x=10:y=10:fontsize=24:fontcolor=white:shadowy=2" output.mp4
+ffmpeg -i input.mp4 -vf "drawtext=fontfile=ziti.ttf: text='watermarker':x=10:y=10:fontsize=24:fontcolor=white:shadowy=2" output.mp4
 # fontfile:字体类型
 # text:要添加的文字内容
 # fontsize:字体大小
