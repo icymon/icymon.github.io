@@ -178,6 +178,7 @@ worker2
 		<value>master:9870</value>
 	</property>
 	
+	<!-- 如下4项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
 	<property>
 		<name>dfs.datanode.address</name>
 		<value>master:9866</value>
@@ -235,14 +236,18 @@ worker2
          <value>master:8088</value>     
      </property>
 
+		<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
+		<!-- localizer IPC -->
 	 <property>         
          <name>yarn.nodemanager.localizer.address</name>         
          <value>master:8040</value>     
      </property>
+	 <!-- http服务端口 -->
 	 <property>         
          <name>yarn.nodemanager.webapp.address</name>         
          <value>master:8042</value>     
      </property>
+	 <!-- NM中container manager的端口 -->
 	 <property>         
          <name>yarn.nodemanager.address</name>         
          <value>master:8041</value>     
@@ -282,7 +287,29 @@ Starting nodemanagers
 # 出现NameNode和SecondaryNameNode等5项证明配置没有问题。
 ```
 ### 配置Spark
+
 ``` shell
+[hdp@master ~]$ cd /home/hdp/spark-3.4.0-bin-hadoop3/conf
+[hdp@master conf]$ vi spark-env.sh
+export SCALA_HOME=/home/hdp/scala3-3.2.2
+export JAVA_HOME=/home/hdp/jdk1.8.0_341
+export HADOOP_INSTALL=/home/hdp/hadoop-3.3.5
+export HADOOP_CONF_DIR=$HADOOP_INSTALL$/etc/hadoop
+SPARK_MASTER_IP=master
+SPARK_LOCAL_DIRS=/home/hdp/spark-3.4.0-bin-hadoop3
+SPART_DRIVER_MEMORY=512m
+[hdp@master conf]$ vi workers
+master
+worker1
+worker2
+[hdp@master conf]$ scp -r /home/hdp/spark-3.4.0-bin-hadoop3/conf hdp@worker1:/home/hdp/spark-3.4.0-bin-hadoop3/
+[hdp@master conf]$ scp -r /home/hdp/spark-3.4.0-bin-hadoop3/conf hdp@worker2:/home/hdp/spark-3.4.0-bin-hadoop3/
+
+[hdp@master sbin]$ cd /home/hdp/spark-3.4.0-bin-hadoop3/sbin
+[hdp@master sbin]$ ./start-all.sh
+
+# 访问：master:8080，若显示3个worker则为成功。
+
 
 ```
 
