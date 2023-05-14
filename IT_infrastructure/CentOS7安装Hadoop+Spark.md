@@ -184,35 +184,35 @@ worker2
          <value>/home/hdp/hadoop-3.3.5/tmp/dfs/data</value>
      </property>
 	 <!-- nn web端访问地址-->
-	<property>
-		<name>dfs.namenode.http-address</name>
-		<value>master:9870</value>
-	</property>
-	<!-- 2nn web端访问地址-->
-	<property>
-		<name>dfs.namenode.secondary.http-address</name>
-		<value>master:9868</value>
-	</property>
-	<!-- -->
-	<property>
-		<name>dfs.http.address</name>
-		<value>master:9870</value>
-	</property>
+	 <property>
+		 <name>dfs.namenode.http-address</name>
+		 <value>master:9870</value>
+	 </property>
+	 <!-- 2nn web端访问地址-->
+	 <property>
+		 <name>dfs.namenode.secondary.http-address</name>
+		 <value>master:9868</value>
+	 </property>
+	 <!-- -->
+	 <property>
+		 <name>dfs.http.address</name>
+		 <value>master:9870</value>
+	 </property>
 	
-	<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
-	<!-- worker中要改主机名为worker的hostname -->
-	<property>
-		<name>dfs.datanode.address</name>
-		<value>master:9866</value>
-	</property>
-	<property>
-		<name>dfs.datanode.ipc.address</name>
-		<value>master:9867</value>
-	</property>
-	<property>
-		<name>dfs.datanode.http.address</name>
-		<value>master:9864</value>
-	</property>
+	 <!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address -->
+	 <!-- worker中要改主机名为worker的hostname -->
+	 <property>
+		 <name>dfs.datanode.address</name>
+		 <value>master:9866</value>
+	 </property>
+	 <property>
+		 <name>dfs.datanode.ipc.address</name>
+		 <value>master:9867</value>
+	 </property>
+	 <property>
+		 <name>dfs.datanode.http.address</name>
+		 <value>master:9864</value>
+	 </property>
 </configuration>
 ```
 
@@ -272,9 +272,9 @@ worker2
          <value>master:8088</value>     
      </property>
 
-		<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
-		<!-- worker中要改主机名为worker的hostname -->
-		<!-- localizer IPC -->
+	 <!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address -->
+	 <!-- worker中要改主机名为worker的hostname -->
+	 <!-- localizer IPC -->
 	 <property>         
          <name>yarn.nodemanager.localizer.address</name>         
          <value>master:8040</value>     
