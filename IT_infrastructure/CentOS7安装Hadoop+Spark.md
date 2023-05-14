@@ -301,13 +301,7 @@ sudo firewall-cmd --reload
 [hdp@master hadoop]$ hdfs namenode -format
 [hdp@master hadoop]$ hdfs datanode -format
 # 启动Hadoop集群
-[hdp@master hadoop]$ start-dfs.sh
-Starting namenodes on [master]
-Starting datanodes
-Starting secondary namenodes [master]
-[hdp@master hadoop]$ start-yarn.sh
-Starting resourcemanager
-Starting nodemanagers
+[hdp@master hadoop]$ start-all.sh
 [hdp@master ~]$ jps
 18114 DataNode
 19044 Jps
