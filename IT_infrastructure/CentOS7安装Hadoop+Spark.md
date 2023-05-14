@@ -178,19 +178,16 @@ worker2
 		<value>master:9870</value>
 	</property>
 	
-	<!-- 如下4项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
-	
+	<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
+	<!-- worker中要改主机 -->
 	<property>
 		<name>dfs.datanode.address</name>
-		<!-- worker中要改主机 -->
 		<value>master:9866</value>
 	</property>
-	
 	<property>
 		<name>dfs.datanode.ipc.address</name>
 		<value>master:9867</value>
 	</property>
-	
 	<property>
 		<name>dfs.datanode.http.address</name>
 		<value>master:9864</value>
@@ -239,6 +236,7 @@ worker2
      </property>
 
 		<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
+		<!-- worker中要改主机 -->
 		<!-- localizer IPC -->
 	 <property>         
          <name>yarn.nodemanager.localizer.address</name>         
@@ -250,9 +248,8 @@ worker2
          <value>master:8042</value>     
      </property>
 	 <!-- NM中container manager的端口 -->
-	 <!-- worker中要改主机 -->
 	 <property>         
-         <name>yarn.nodemanager.address</name>         
+         <name>yarn.nodemanager.address</name> 	 
          <value>master:8041</value>     
      </property>	 
 </configuration>
@@ -332,18 +329,8 @@ $ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/*
 ```
 
-###  NodeManager: Error starting NodeManager
 
-> Problem binding to [desktop-uo28r8f:0] 
-
-> Problem binding to [desktop-uo28r8f:9867]
-
-我的解决方案是停止集群，删除/tmp/ 目录下所有的零时文件，重新启动成功
-
-参考：[启动yarn时nodemanager报错](https://www.jianshu.com/p/33c3fcc511bb/)
-
-
-####  Tips
+## Tips
 
 192.168.1.202:9870  --访问hadoop集群前台页面
 
