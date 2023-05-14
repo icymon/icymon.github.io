@@ -179,8 +179,10 @@ worker2
 	</property>
 	
 	<!-- 如下4项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
+	
 	<property>
 		<name>dfs.datanode.address</name>
+		<!-- worker中要改主机 -->
 		<value>master:9866</value>
 	</property>
 	
@@ -248,6 +250,7 @@ worker2
          <value>master:8042</value>     
      </property>
 	 <!-- NM中container manager的端口 -->
+	 <!-- worker中要改主机 -->
 	 <property>         
          <name>yarn.nodemanager.address</name>         
          <value>master:8041</value>     
