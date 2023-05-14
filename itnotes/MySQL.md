@@ -13,7 +13,8 @@ mysql -uroot -p -h 192.168.0.1 -P 123 --default-character-set=utf8mb4  DBNAME < 
 ```
 
 ``` sql
-show  variables like 'datadir' # 查看数据目录
+-- 查看数据目录
+show  variables like 'datadir';
 ```
 ### Debian 11 安装 MySQL 8
 #### deb包方式安装
