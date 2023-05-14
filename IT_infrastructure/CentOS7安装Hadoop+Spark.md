@@ -198,7 +198,7 @@ worker2
 	</property>
 	
 	<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
-	<!-- worker中要改主机 -->
+	<!-- worker中要改主机名为worker的hostname -->
 	<property>
 		<name>dfs.datanode.address</name>
 		<value>master:9866</value>
@@ -271,7 +271,7 @@ worker2
      </property>
 
 		<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address-->
-		<!-- worker中要改主机 -->
+		<!-- worker中要改主机名为worker的hostname -->
 		<!-- localizer IPC -->
 	 <property>         
          <name>yarn.nodemanager.localizer.address</name>         
