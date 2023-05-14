@@ -27,7 +27,8 @@ $ tar -zxvf spark-3.4.0-bin-hadoop3.tgz -C /home/hdp/
 ## 安装配置JDK
 
 ### 配置Java
-* 在.bashrc中添加环境变量
+
+> 在.bashrc中添加环境变量
 
 ``` shell
 vi .bashrc
@@ -44,7 +45,9 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.341-b10, mixed mode)
 
 
 ## 安装Scala
-* 在.bashrc中添加环境变量
+
+> 在.bashrc中添加环境变量
+
 ``` shell
 vi .bashrc
 export SCALA_HOME=/home/hdp/scala3-3.2.2
@@ -59,7 +62,9 @@ Scala code runner version 3.2.2 -- Copyright 2002-2023, LAMP/EPFL
 
 
 ## 安装Hadoop
+
 ### 在.bashrc中添加环境变量
+
 ``` shell
 vi .bashrc
 export HADOOP_HOME=/home/hdp/hadoop-3.3.5
