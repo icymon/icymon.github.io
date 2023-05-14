@@ -63,7 +63,7 @@ Scala code runner version 3.2.2 -- Copyright 2002-2023, LAMP/EPFL
 
 ## 安装Hadoop
 
-### 在.bashrc中添加环境变量
+> 在.bashrc中添加环境变量
 
 ``` shell
 vi .bashrc
@@ -103,9 +103,11 @@ worker1
 worker2
 ```
 ## 配置三台机器基本环境
+
 ### 将此环境复制两个worker：worker1和worker2
 
-* 修改主机名、IP、hosts文件中的指向
+> 修改主机名、IP、hosts文件中的指向
+
 ``` shell
 [hdp@master ~]$ vi /etc/hosts
 192.168.1.202 master
