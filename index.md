@@ -26,6 +26,8 @@
 
 * [CentOS7升级gcc](IT_infrastructure/CentOS7升级gcc.md)
 
+* [CentOS7安装Hadoop+Spark](IT_infrastructure/CentOS7安装Hadoop+Spark.md)
+
 * [CentOS7安装MySQL8](IT_infrastructure/CentOS7InstallMySQL8.md)
 
 * [CentOS7安装Qt5.12.3](IT_infrastructure/CentOS7安装Qt5.12.3.md)
