@@ -12,6 +12,9 @@ mysqldump -uroot -p -h 192.168.0.1 -P 123 --set-gtid-purged=OFF -x --hex-blob --
 mysql -uroot -p -h 192.168.0.1 -P 123 --default-character-set=utf8mb4  DBNAME < F:\DBNAME202010291528.sql
 ```
 
+``` sql
+show  variables like 'datadir' # 查看数据目录
+```
 ### Debian 11 安装 MySQL 8
 #### deb包方式安装
 * [Debian 11 安装 MySQL 8（deb包方式）](debian11mysql8.md)

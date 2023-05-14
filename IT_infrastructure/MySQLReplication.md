@@ -140,6 +140,7 @@ binlog_cache_size = 4m
 #最大binlog缓存大小
 max_binlog_cache_size= 512m
 # 设置从库只读。此时若插入数据，报错：The MySQL server is running with the --read-only option so it cannot execute this statement
+# 若互为主从，取消该设置
 read_only = 1
 #################################################################
 ```
