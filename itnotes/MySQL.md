@@ -2,6 +2,9 @@
 ### MySQL 备份和还原数据库
 ```
 mysqldump -uroot -p -h 192.168.0.1 -P 123 --set-gtid-purged=OFF -x --hex-blob --default-character-set=utf8mb4 DBNAME > F:\DBNAME20201126.sql
+# 导出并压缩
+mysqldump -uroot -p -h 192.168.0.1 -P 123 --set-gtid-purged=OFF -x --hex-blob --default-character-set=utf8mb4 dbname table_name | gzip > /home/com.sql.gz
+
 ```
 * -x 锁表
 * --no-data 导出跳过的表结构 
