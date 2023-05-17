@@ -30,5 +30,37 @@ sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_
 ```
 * 重启MySQL
 
+#### Got an error reading communication packets
+
+> mysql根据配置文件会限制server接受的数据包大小。有时候大的插入和更新会受max_allowed_packet参数限制，导致写入或者更新失败。
+
+``` sql
+mysql> show variables like 'max_allowed_packet';
++--------------------+---------+
+| Variable_name      | Value   |
++--------------------+---------+
+| max_allowed_packet | 4194304 |
++--------------------+---------+
+1 row in set (0.00 sec)
+```
+
+``` shell
+# vi /etc/my.cnf # 在[mysqld]加入200M：max_allowed_packet=20971520
+# systemctl restart mysqld
+# mysql -uroot -p
+```
+
+``` sql
+mysql> show variables like 'max_allowed_packet';
++--------------------+----------+
+| Variable_name      | Value    |
++--------------------+----------+
+| max_allowed_packet | 20971520 |
++--------------------+----------+
+1 row in set (0.01 sec)
+```
+
+> 临时修改：输入命令 set global max_allowed_packet = 2*1024*1024*10; 
+
 ### MySQL 优化
 [MySQL 故障诊断：MySQL 占用 CPU 过高问题定位及优化](https://www.51cto.com/article/703691.html)
