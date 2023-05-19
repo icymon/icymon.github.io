@@ -42,6 +42,8 @@
 
 * [VMware安装增强工具](IT_infrastructure/VMware安装增强工具.md)
 
+* [Ubuntu18.04安装NVIDIA驱动](IT_infrastructure/Ubuntu18.04安装NVIDIA驱动.md)
+
 * [Ubuntu22.04 初始化配置](itnotes/ubuntu2204init.md)
 
 * [Debian 11 初始化配置](itnotes/debian11init.md)
