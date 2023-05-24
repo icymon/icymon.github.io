@@ -24,7 +24,38 @@ show  variables like 'datadir';
 * [Debian 11 安装 MySQL 8（deb包方式）](debian11mysql8.md)
 
 ### MySQL常见问题
+
+#### 非root用户无法登录MySQL
+
+* 1、使用sudo登录MySQL
+
+> 参考：[解决mysql在非root用户下登录失败问题](https://www.jianshu.com/p/f3b1a680373b)
+
+``` shell
+# mysql -uroot -p 
+```
+``` sql
+use mysql;
+select User,Host,plugin from user;
+update user set plugin='mysql_native_password'
+```
+* 2、使用普通用户登录MySQL 
+
+``` shell
+$ mysql -uroot
+
+```
+``` sql
+use mysql;
+set password for root@localhost = password('123');
+flush privileges 
+```
+
+
+
+
 #### gruop by报错this is incompatible with sql_mode=only_full_group_by 
+
 * 参考[mysql命令gruop by报错this is incompatible with sql_mode=only_full_group_by](https://www.cnblogs.com/liyhbk/p/15649093.html)
 * mysql5.7 以上默认开启了only_full_group_by选项。
 * vim /etc/my.cnf 加入如下配置
