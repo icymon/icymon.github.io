@@ -47,6 +47,8 @@ $ sudo ubuntu-drivers devices
 $ sudo ubuntu-drivers autoinstall
 # or
 $ sudo ubuntu-drivers install nvidia-470
+# 卸载驱动
+$ sudo apt-get remove --purge nvidia-*
 ```
 
 ## 选择独显或者核显
