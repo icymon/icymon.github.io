@@ -185,4 +185,5 @@ ln -s /usr/lib64/libfastcommon.so /usr/lib/libfastcommon.so
 user root root;
 ```
 * 还有可能是存储路径不一致，需要检查下配置文件里的路径；另外可通过/var/log/nginx/error.log查看访问时404出错的路径是否存在该文件。
+
 * 这里牵扯到另外一个细节，tracker、storage、client、nginx等配置文件中的端口需要保持一致，tracker、storage、client中配置项为http.server_port
