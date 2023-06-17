@@ -3,6 +3,7 @@
 * [百度](https://www.baidu.com/)
 * [地图](http://www.gditu.net/)
 * [必应](https://cn.bing.com/)
+* [网盘资源](referrence/pan.md)
 
 ### CMDs 
 
