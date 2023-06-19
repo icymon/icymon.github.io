@@ -11,6 +11,8 @@ scl enable devtoolset-10 bash # 或者在/etc/profile中添加source /opt/rh/dev
 【安装Java（安装R前提）】
 ``` shell
 wget https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.rpm
+# wget https://download.oracle.com/java/20/latest/jdk-20_linux-x64_bin.deb
+
 # 用文本编辑器打开/etc/profile 在profile文件末尾加入：
 export JAVA_HOME=/usr/lib/jvm/jdk-20-oracle-x64
 export PATH=$JAVA_HOME/bin:$PATH
@@ -42,6 +44,28 @@ wget https://download2.rstudio.org/server/centos7/x86_64/rstudio-server-rhel-202
 sudo yum install rstudio-server-rhel-2023.03.0-386-x86_64.rpm
 ```
 
+【ubuntu安装R】
+```
+sudo apt-get install build-essential gfortran libxt-dev libreadline6-dev libbz2-dev liblzma-dev libcurl4-openssl-dev gawk unzip libxt-dev zlib1g-de
+wget https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.zip --no-check-certificate
+./configure
+make && make install
+
+wget https://www.openssl.org/source/openssl-1.1.1u.tar.gz
+
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+# sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+#  apt-key用法
+# apt-key list          # 列出已保存在系统中key。
+# apt-key add keyname   # 把下载的key添加到本地trusted数据库中。
+# apt-key del keyname   # 从本地trusted数据库删除key。
+# apt-key update        # 更新本地trusted数据库，删除过期没用的key。
+# rstudio 安装包
+https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.06.0-421-amd64-debian.tar.gz
+https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.06.0-421-amd64.deb
+https://download1.rstudio.org/electron/jammy/amd64/rstudio-2023.06.0-421-amd64.deb
+https://posit.co/download/rstudio-desktop/
+```
 【登录】
 * 默认端口为8787，需要防火墙放行
 * 登录用户名密码为Linux用户名密码
