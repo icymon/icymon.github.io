@@ -44,9 +44,9 @@ wget https://download2.rstudio.org/server/centos7/x86_64/rstudio-server-rhel-202
 sudo yum install rstudio-server-rhel-2023.03.0-386-x86_64.rpm
 ```
 
-【ubuntu安装R】
+【Ubuntu安装R】
 ```
-sudo apt-get install build-essential gfortran libxt-dev libreadline6-dev libbz2-dev liblzma-dev libcurl4-openssl-dev gawk unzip libxt-dev zlib1g-de
+sudo apt-get install build-essential gfortran libxt-dev libreadline6-dev libbz2-dev liblzma-dev libcurl4-openssl-dev gawk unzip libxt-dev zlib1g-dev
 wget https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.zip --no-check-certificate
 ./configure
 make && make install
