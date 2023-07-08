@@ -4,6 +4,8 @@
 * [地图](http://www.gditu.net/)
 * [必应](https://cn.bing.com/)
 * [网盘资源](referrence/pan.md)
+* [南京大学网络源](https://mirror.nju.edu.cn/)
+* [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)
 
 ### CMDs 
 
