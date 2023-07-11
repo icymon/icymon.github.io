@@ -116,3 +116,32 @@ Qt will be installed into '/usr/local/Qt-5.12.3'.
 Prior to reconfiguration, make sure you remove any leftovers from
 the previous build.
 ```
+
+
+#### 源码编译步骤
+参考：[Static compile error Qt5.12.0: bootstrap-private](https://forum.qt.io/topic/98501/static-compile-error-qt5-12-0-bootstrap-private)
+
+1、Do Not run configure directly in the src directory (e.g., run ./configure), run it in a separate build directory.
+
+2、Make sure your -prefix "install/path" is different from your build directory, otherwise you will encounter this issue.
+
+The typical steps to build Qt
+
+``` shell 
+$ mkdir build
+$ cd build
+$ ~/your/qt/src/configure -prefix "~/your/qt/install/path" -other-options...
+$ make
+$ make install
+```
+
+Your
+
+1、source directory
+
+2、build directory (your pwd)
+
+3、install directory (assigned with -prefix)
+
+must be 3 different directories.
+
