@@ -4,8 +4,10 @@
 
 ``` shell
 sudo apt update
-
+# Debian 11
 sudo apt purge aisleriot gnome-sudoku mahjongg ace-of-penguins gnomine gbrainy gnome-sushi gnome-nibbles gnome-taquin gnome-tetravex  gnome-robots gnome-chess lightsoff swell-foop quadrapassel tali gnome-mahjongg gnome-2048 iagno gnome-klotski five-or-more gnome-mines four-in-a-row hitori && sudo apt autoremove
+# Debian 12
+sudo apt purge aisleriot gnome-sudoku ace-of-penguins gbrainy gnome-sushi gnome-nibbles gnome-taquin gnome-tetravex  gnome-robots gnome-chess lightsoff swell-foop quadrapassel tali gnome-mahjongg gnome-2048 iagno gnome-klotski five-or-more gnome-mines four-in-a-row hitori && sudo apt autoremove
 ```
 ## 2、安装输入法
 
@@ -128,3 +130,4 @@ $ sudo systemctl status sleep.target
 $ ls -la /dev/disk/by-id
 # 写入fstab
 /dev/disk/by-id/xxxxxxxxxxxxxx-part1	/data	ext4	defaults	0	0
+```
