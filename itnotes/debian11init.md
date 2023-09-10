@@ -101,3 +101,30 @@ sudo apt-get install flameshot
 sudo flameshot config  # 配置截图工具
 flameshot gui   # 截图命令，可在系统快捷键中设置该命令，快速调用
 ```
+## 14、禁用休眠
+
+``` shell
+$ sudo systemctl status sleep.target 
+[sudo]  的密码：
+○ sleep.target - Sleep
+     Loaded: loaded (/lib/systemd/system/sleep.target; static)
+     Active: inactive (dead)
+       Docs: man:systemd.special(7)
+$ sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target 
+Created symlink /etc/systemd/system/sleep.target → /dev/null.
+Created symlink /etc/systemd/system/suspend.target → /dev/null.
+Created symlink /etc/systemd/system/hibernate.target → /dev/null.
+Created symlink /etc/systemd/system/hybrid-sleep.target → /dev/null.
+$ sudo systemctl status sleep.target 
+○ sleep.target
+     Loaded: masked (Reason: Unit sleep.target is masked.)
+     Active: inactive (dead)
+```
+
+## 15、sda、sdb重启变化
+
+``` shell
+# 查出设备uuid
+$ ls -la /dev/disk/by-id
+# 写入fstab
+/dev/disk/by-id/xxxxxxxxxxxxxx-part1	/data	ext4	defaults	0	0
