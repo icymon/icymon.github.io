@@ -27,6 +27,8 @@
 
 * [CentOS安装Jellyfin](IT_infrastructure/CentOSInstallJellyfin.md)
 
+* [vc_redist](https://learn.microsoft.com/zh-cn/cpp/windows/latest-supported-vc-redist?view=msvc-170)
+
 * [CentOS7升级gcc](IT_infrastructure/CentOS7升级gcc.md)
 
 * [CentOS7安装Hadoop+Spark](IT_infrastructure/CentOS7安装Hadoop+Spark.md)
