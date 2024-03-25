@@ -59,6 +59,8 @@
 ### IT 常见问题
 * [debian用清华源出现证书错误解决方法](IT_FAQ/debian用清华源出现证书错误解决方法.md)
 
+* [Linux 常用命令](IT_FAQ/LinuxCMDs.md)
+
 * [Server unexpectedly closed network connection的解决](IT_FAQ/Server unexpectedly closed network connection的解决.md)
 
 * [Ubuntu20.04访问不了github的问题](IT_FAQ/Ubuntu20.04访问不了github的问题.md)
