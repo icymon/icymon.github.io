@@ -18,6 +18,7 @@
 | [fstab](itnotes/fstab.md) |  [tar](itnotes/tarCMDs.md) | [wget](itnotes/wget.md) |
 | [sed](itnotes/sed.md) |  [awk](itnotes/awk.md) | [go](itnotes/go.md) |
 | [crontab](https://tool.lu/crontab/) |  [fdisk](https://www.cnblogs.com/ray-bk/p/10768820.html) | [LVM](itnotes/lvm.md) |
+| [more](itnotes/more.md) |  [-](#) |  [-](#)  |
 
 
 
