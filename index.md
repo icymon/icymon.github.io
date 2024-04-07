@@ -4,7 +4,6 @@
 * [地图](http://www.gditu.net/)
 * [matplotlib-colormaps](https://matplotlib.org/stable/users/explain/colors/colormaps.html)
 * [matplotlib-examples](https://matplotlib.org/stable/gallery/index.html)
-* [网盘资源](referrence/pan.md)
 * [南京大学网络源](https://mirror.nju.edu.cn/)
 * [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/)
 
