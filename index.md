@@ -85,7 +85,6 @@
 * [百度拾取坐标系统](https://api.map.baidu.com/lbsapi/getpoint/index.html)
 * [高德拾取坐标系统](https://lbs.amap.com/console/show/picker)
 * [前端拾取坐标系统](http://geojson.io/#map=16/30.8154/120.4920)
-* [ID_generater](http://sfz.uzuzuz.com/?region=320506&birthday=19860511&sex=2&num=5&r=39)
 * [ColorPalettes](static/ColorPalettes.html)
 
 ### NOTES
