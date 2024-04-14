@@ -2,12 +2,12 @@
 ## 安装编译环境
 ``` shell
 sudo apt install build-essential
-apt install -y gcc automake autoconf libtool make
+sudo apt install -y gcc automake autoconf libtool make
 ```
 ## centos 安装编译环境
 ``` shell
 # 后面安装nginx也会用到
-yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl-devel libevent make automake autoconf libtool wget vim git -y
+yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl-devel libevent make automake autoconf libtool wget vim git
 ```
 ## 下载源码包
 
