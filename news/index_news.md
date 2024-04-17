@@ -1,5 +1,5 @@
-## 新闻收藏
-### 202207
+## 新闻网站
+
 * [britannica](https://www.britannica.com/)
 * [mining](https://www.mining.com/)
 * [NASA](https://www.nasa.gov/)
