@@ -25,3 +25,7 @@
 
 # 微信
 * [微信](https://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.2_amd64.deb)
+
+# 电子书阅读器：Koodo
+* [微信](https://github.com/koodo-reader/koodo-reader)
+

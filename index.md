@@ -2,6 +2,7 @@
 ### 常用
 * [韦伯望远镜](https://webbtelescope.org/)
 * [地图](http://www.gditu.net/)
+* [书籍](books/index_books.md)
 
 
 ### 导航
