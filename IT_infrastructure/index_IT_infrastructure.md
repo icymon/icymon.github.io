@@ -27,8 +27,8 @@
 
 * [Ubuntu18.04安装NVIDIA驱动](Ubuntu18.04安装NVIDIA驱动.md)
 
-* [Ubuntu22.04 初始化配置](itnotes/ubuntu2204init.md)
+* [Ubuntu22.04 初始化配置](ubuntu2204init.md)
 
-* [Debian 11 初始化配置](itnotes/debian11init.md)
+* [Debian 11 初始化配置](debian11init.md)
 
 * [CentOS7安装armadillo](CentOS7安装armadillo.md)
