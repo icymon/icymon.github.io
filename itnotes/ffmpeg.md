@@ -28,7 +28,7 @@ ffmpeg -i input.mp4 -i logo.png -filter_complex 'overlay=x=10:y=main_h-overlay_h
 ## 拼接视频
 
 ``` shell
-ffmpeg -f concat -i video.txt -c copy concatjk.mp4
+ffmpeg -f concat -i video.txt -c copy output.mp4
 ```
 * video.txt 格式如下
 
