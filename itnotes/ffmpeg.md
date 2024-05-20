@@ -25,6 +25,12 @@ ffmpeg -i input.mp4 -i logo.png -filter_complex 'overlay=x=10:y=main_h-overlay_h
 # overlay_h:要添加的图片水印宽度
 ```
 
+## 添加封面
+
+``` shell
+ffmpeg -i input.mp4 -i cover.jpg -map 0 -map 1 -c copy -disposition:v:1 attached_pic output.mp4
+```
+
 ## 拼接视频
 
 ``` shell
@@ -48,3 +54,4 @@ ffmpeg -i input.mov -c:v libx264 -preset veryslow -crf 18 -c:acopy output.mp4 # 
 ffmpeg -i input.mp4 -b:v 500k -r 25 output.mp4 # -r 帧率 -b 码率，建议不小于500k；-itsoffset -00:00:00.900 视频偏移，解决音画不同步
 ffmpeg -itsoffset -00:00:00.900 -i input.mp4 -b:v 500k -r 25 output.mp4 # -itsoffset -00:00:00.900 视频偏移，解决音画不同步，该参数位置在命令后：Move this option before the file it belongs to.
 ```
+
