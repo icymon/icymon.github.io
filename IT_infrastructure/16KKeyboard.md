@@ -10,6 +10,8 @@ iasl -d dsdt.dat
 * 修改PS2K设备下的`IRQ（Edge,ActiveLow,Shared,) ` -> `IRQ（Edge,ActiveHigh,Shared,)`
 * 修改 `DefinitionBlock （""，"DSDT"，2，` 中最后的步进值+1  `0x01072009`-> `0x0107200A`
 
+>> DefinitionBlock上面的 `OEM Revision	0x0107200A(17244170)` 貌似可以不用管
+
 ``` shell 
 DefinitionBlock('", "DSDT", 2, "ALASKA", "A M I", 0x0107200A)
 ```
