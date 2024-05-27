@@ -32,3 +32,5 @@
 * [Debian 11 初始化配置](debian11init.md)
 
 * [CentOS7安装armadillo](CentOS7安装armadillo.md)
+
+* [蛟龙16K安装Debian12（Linux高版本）键盘失灵](16KKeyboard.md)
