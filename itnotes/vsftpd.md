@@ -82,7 +82,7 @@ sudo passwd ftpUser
 > 以filezilla server为例
 
 * 1、设置被动端口范围、监听端口，同时防火墙开放上述端口；
-* 2、配置public IP，路由器外的公网IP
+* 2、配置public IP，路由器外的公网IP。注：虚拟机情况下，不能填虚拟机本机IP，须互联网公网IP。
 
 
 
