@@ -34,3 +34,4 @@
 * [CentOS7安装armadillo](CentOS7安装armadillo.md)
 
 * [蛟龙16K安装Debian12（Linux高版本）键盘失灵](16KKeyboard.md)
+* [银河麒麟V10SP1安装MySQL5.5.40](yinheqilin_install_mysql5540.md)

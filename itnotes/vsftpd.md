@@ -77,3 +77,13 @@ sudo useradd -d /home/sftpUser -s /sbin/nologin -g ftpUser ftpUser
 sudo passwd ftpUser
 ```
 
+### NAT被动模式
+
+> 以filezilla server为例
+
+* 1、设置被动端口范围、监听端口，同时防火墙开放上述端口；
+* 2、配置public IP，路由器外的公网IP
+
+
+
+
