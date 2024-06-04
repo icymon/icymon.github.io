@@ -36,6 +36,7 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/libncurses.so.5
 ``` shell 
 sudo vi /etc/systemd/system/mysqld.service
 ```
+
 > 添加如下内容：
 
 ```
