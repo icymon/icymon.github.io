@@ -87,7 +87,9 @@ create database jingtai character set utf8 collate utf8_general_ci;
 CREATE USER 'jingtaim'@'%' IDENTIFIED BY 'Admin123!';
 GRANT ALL privileges ON jingtai.* TO 'jingtaim'@'%' IDENTIFIED BY 'Admin123!';
 -- 为从库复制创建用户，授权不能指定库：Since the REPLICATION SLAVE privileges are global and can not be assigned to a particular database, they must be specified globally in the query。
--- MySQL8创建用户和授权是分两条代码写的，且密码使用with mysql_native_password指定。否则，前者有语法错误，后者在slave启动时报authentication required xxxxxxxxxxxxxxxxx错误
+-- MySQL8创建用户和授权是分两条代码写的(如下)，且密码使用with mysql_native_password指定。否则，前者有语法错误，后者在slave启动时报authentication required xxxxxxxxxxxxxxxxx错误
+-- ALTER USER 'username'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+-- grant replication slave on *.* to 'username'@'%';
 grant replication slave on *.* to 'jingtais'@'%' identified by 'Admin123!';
 flush privileges;
 
