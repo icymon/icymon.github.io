@@ -43,12 +43,15 @@ ALTER TABLE t1 IMPORT TABLESPACE;
 
 
 # Windows安装MySQL5.6
-## 下载解压MySQL至目录
 
-### 在系统变量里选择PATH，在其后面添加: mysql bin文件夹的路径 (如: D:\Program Files\mysql-5.6\bin )，注意是追加，不是覆盖。
+## 1、下载解压MySQL至目录
 
-### 拷贝 mysql 目录中的my-default.ini，重命名为my.ini
+### 1、1在系统变量里选择PATH，在其后面添加: mysql bin文件夹的路径 (如: D:\Program Files\mysql-5.6\bin )，注意是追加，不是覆盖。
+
+### 1、2拷贝 mysql 目录中的my-default.ini，重命名为my.ini
+
 修改：
+
 ```
 basedir = .....
 datadir = .....
@@ -56,35 +59,27 @@ port = .....
 server_id = .....
 ```
 
-## 以管理员身份运行cmd（一定要用管理员身份运行，不然权限不够），通过命令，进入mysql bin 目录
-
-
+## 2、以管理员身份运行cmd（一定要用管理员身份运行，不然权限不够），通过命令，进入mysql bin 目录
 
 > 输入 `mysqld --initialize-insecure --user=mysql` 回车
 
-
-
 > 输入 `mysqld install` 回车
-
-
 
 * 到此 mysql 安装成功
 
-## 启动 MySQL
+## 3、启动 MySQL
 
 > 输入 net start mysql 回车，启动mysql服务，start 启动，stop 停止
 
 
-
-## 安装和卸载MySQL服务
+## 4、安装和卸载MySQL服务
 
 ``` sql
 mysqld -install
 mysqld --remove mysql   
 ```
 
-
-## 设置root密码
+## 5、设置root密码
 
 * 依次通过以下命令修改root用户名密码：
 
