@@ -62,7 +62,7 @@ base_path=/home/jingtai/fdfs/tracker
 # 保存并退出
 :wq
 # 配置防火墙，开放Tracker服务占用的22122端口
-ufw enable 22l22
+sudo ufw allow 22l22/tcp
 # 启动Tracker服务
 fdfs_trackerd /etc/fdfs/tracker.conf start
 ```
