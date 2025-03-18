@@ -16,6 +16,14 @@ fastdfs-6.9.4.tar.gz  fastdfs-nginx-module-1.23.tar.gz  libfastcommon-1.0.66.tar
 
 * [fastdfs系列包](https://github.com/happyfish100)
 
+```
+wget -O fastdfs_V6.12.2.tar.gz https://github.com/happyfish100/fastdfs/archive/refs/tags/V6.12.2.tar.gz
+wget -O fastdfs-nginx-module_V1.24.tar.gz https://github.com/happyfish100/fastdfs-nginx-module/archive/refs/tags/V1.24.tar.gz
+wget -O libfastcommon_V1.0.76.tar.gz https://github.com/happyfish100/libfastcommon/archive/refs/tags/V1.0.76.tar.gz
+wget -O libserverframe_V1.2.6.tar.gz https://github.com/happyfish100/libserverframe/archive/refs/tags/V1.2.6.tar.gz
+wget -O nginx-1.26.3.tar.gz https://nginx.org/download/nginx-1.26.3.tar.gz
+```
+
 * [Nginx下载页面](https://nginx.org/en/download.html)
 
 ## 编译安装
@@ -75,11 +83,11 @@ base_path=/home/jingtai/fdfs/storage
 # 修改store_path属性，如果不配置就是跟base_path一样，我这里就直接跟配置base_path一样的路径了
 store_path0=/home/jingtai/fdfs/storage
 # 修改tracker_server地址，tracker服务所在的服务器的IP地址，有域名的也可以改成 域名:22122，如果有多个tracker服务，可以配置多行，官方默认给我配了两行，如果只有一个tracker服务，可以注释掉一行。
-tracker_server = 10.0.2.191:22122
+tracker_server = 192.168.0.190:22122
 # 保存并退出
 :wq
 # 配置防火墙，开放Storage服务占用的23000端口
-ufw enable 23000
+sudo ufw allow 23000/tcp
 # 启动Storage服务
 fdfs_storaged /etc/fdfs/storage.conf start
 
@@ -91,7 +99,7 @@ vim client.conf
 # 修改base_path属性，自定义client的数据和日志的输出目录
 base_path=/home/jingtai/fdfs/client
 # 修改tracker_server地址，tracker服务所在的服务器的IP地址，有域名的也可以改成 域名:22122，如果有多个tracker服务，可以配置多行，官方默认给我配了两行，如果只有一个tracker服务，可以注释掉一行。
-tracker_server = 10.0.2.191:22122
+tracker_server = 192.168.0.190:22122
 # 保存并退出
 :wq
 ```
@@ -121,7 +129,7 @@ fdfs_upload_file /etc/fdfs/client.conf abc.jpg
 ``` shell
 sudo cp /home/jingtai/fastdfs_zips/fastdfs-nginx-module-1.23/src/mod_fastdfs.conf /etc/fdfs/
 sudo vi /etc/fdfs/mod_fastdfs.conf
-tracker_server=10.0.2.191:22122
+tracker_server=192.168.0.190:22122
 url_have_group_name = true
 store_path0=/home/jingtai/fdfs/storage
 ```
@@ -134,6 +142,8 @@ cp /home/jingtai/fastdfs_zips/fastdfs-6.9.4/conf/http.conf /etc/fdfs/
 cp /home/jingtai/fastdfs_zips/fastdfs-6.9.4/conf/mime.types /etc/fdfs/
 ```
 ### 安装Nginx
+
+> 多节点情况下，nginx 节点需要部署在storage节点上才能正常访问文件
 
 #### 安装编译工具
 
@@ -167,8 +177,10 @@ location ~/group[0-9]/ {
 
 启动 Nginx，命令为：/home/jingtai/nginx/sbin/nginx
 
+重载：/home/jingtai/nginx/sbin/nginx -s reload
+
 此时客户端上传图片以后得到文件名为：group1/M00/00/00/wKgKZl9tkTCAJAanAADhaCZ_RF0495.jpg
-浏览器访问：http://10.0.2.191/group1/M00/00/00/wKgKZl9tkTCAJAanAADhaCZ_RF0495.jpg
+浏览器访问：http://192.168.0.190/group1/M00/00/00/wKgKZl9tkTCAJAanAADhaCZ_RF0495.jpg
 
 ### 多节点配置（参考）
 
