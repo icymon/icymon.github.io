@@ -1,7 +1,3 @@
-
-
-
-
 # Linux安装Hadoop+Spark
 
 >  本机IP：192.168.1.190

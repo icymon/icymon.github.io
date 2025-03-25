@@ -11,7 +11,7 @@
 
 * [CentOS7安装Hadoop+Spark](CentOS7安装Hadoop+Spark.md)
 
-* [CentOS7安装Hadoop(伪分布式)](CentOS7安装Hadoop(伪分布式).md)
+* [CentOS7安装Hadoop(伪分布式)](CentOS7安装Hadoop_伪分布式.md)
 
 * [CentOS7安装MySQL8](CentOS7InstallMySQL8.md)
 
