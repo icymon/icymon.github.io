@@ -1,6 +1,28 @@
 # Linux安装Hadoop+Spark
 
->  本机IP：192.168.1.190
+>  本机IP：192.168.1.190 (IP配置参考)
+
+```
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto enp0s3
+iface enp0s3 inet static
+	address 192.168.1.190/24
+	network 192.168.1.0
+	broadcast 192.168.1.255
+	gateway 192.168.1.1
+	dns-servers 8.8.8.8
+	dns-servers 114.114.114.114
+```
+
 
 ## 设定hadoop用户
 ``` shell
