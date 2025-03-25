@@ -288,6 +288,9 @@ $ chmod -R +777 /usr/local/hadoop-3.1.3/tmp
 # 在机器上开放端口
 sudo firewall-cmd --zone=public --add-port=20001-20007/tcp --permanent
 sudo firewall-cmd --zone=public --add-port=9870/tcp --permanent
+sudo ufw allow 20001:20007/tcp
+sudo ufw allow 8000:10000/tcp
+sudo systemctl restart ufw
 sudo firewall-cmd --reload
 ```
 ### 启动Hadoop
@@ -297,7 +300,7 @@ sudo firewall-cmd --reload
 [hdp@master hadoop]$ hdfs datanode -format
 # 启动Hadoop集群
 [hdp@master hadoop]$ start-all.sh
-[hdp@master ~]$ jps
+[hdp@master ~]$ jps # jps -l 显示包名
 18114 DataNode
 19044 Jps
 18666 NodeManager

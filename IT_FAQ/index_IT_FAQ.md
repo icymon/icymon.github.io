@@ -14,3 +14,5 @@
 * [error: package or namespace load failed for 'rjags'](rjags.md)
 
 * [bat中文乱码](bat中文乱码.md)
+
+* [Ubuntu域名解析暂时失败](Ubuntu域名解析暂时失败.md)
