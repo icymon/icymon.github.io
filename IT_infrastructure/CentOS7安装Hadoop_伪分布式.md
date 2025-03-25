@@ -1,4 +1,4 @@
-# Linux安装Hadoop+Spark
+# Linux安装Hadoop
 
 >  本机IP：192.168.1.190 (IP配置参考)
 
@@ -40,6 +40,7 @@ $ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.t
 ``` shell
 $ tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/
 $ tar -zxvf hadoop-3.1.3.tar.gz -C /usr/local/
+$ sudo chown -R hdp:hdp /usr/local/hadoop-3.1.3
 ```
 
 ## 安装配置JDK
@@ -74,7 +75,7 @@ export HADOOP_HOME=/usr/local/hadoop-3.1.3
 export PATH=$HADOOP_HOME/sbin:$PATH
 export PATH=$HADOOP_HOME/bin:$PATH
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
+# export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
 
 [hdp@master ~]$ vi /etc/profile
