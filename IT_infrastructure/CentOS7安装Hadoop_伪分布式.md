@@ -31,6 +31,11 @@ $ passwd hdp
 ```
 
 ## 下载安装包
+
+* [Hadoop历史版本](https://archive.apache.org/dist/hadoop/common/)
+
+* [华为云jdk版本下载](https://mirrors.huaweicloud.com/java/jdk/)
+
 ``` shell
 $ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
 $ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
