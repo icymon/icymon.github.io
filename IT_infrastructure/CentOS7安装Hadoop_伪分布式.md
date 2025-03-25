@@ -72,8 +72,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.341-b10, mixed mode)
 ``` shell
 vi /etc/profile
 export HADOOP_HOME=/usr/local/hadoop-3.1.3
-export PATH=$HADOOP_HOME/sbin:$PATH
-export PATH=$HADOOP_HOME/bin:$PATH
+export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 # export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
