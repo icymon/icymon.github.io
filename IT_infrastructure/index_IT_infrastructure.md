@@ -37,6 +37,8 @@
 
 * [VMware安装增强工具](VMware安装增强工具.md)
 
+* [Windows创建链接](Windows创建链接.md)
+
 * [蛟龙16K安装Debian12（Linux高版本）键盘失灵](16KKeyboard.md)
 
 * [银河麒麟V10SP1安装MySQL5.5.40](yinheqilin_install_mysql5540.md)
