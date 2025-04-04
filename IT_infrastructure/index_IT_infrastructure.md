@@ -37,6 +37,10 @@
 
 * [VMware安装增强工具](VMware安装增强工具.md)
 
+* [VBox_Ubuntu安装增强工具](VBox_Ubuntu安装增强工具.md)
+
+* [VMware安装增强工具](VMware安装增强工具.md)
+
 * [Windows创建链接](Windows创建链接.md)
 
 * [蛟龙16K安装Debian12（Linux高版本）键盘失灵](16KKeyboard.md)
