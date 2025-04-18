@@ -38,14 +38,14 @@ $ passwd hdp
 
 ``` shell
 $ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
-$ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.3/hadoop-3.1.3.tar.gz
+$ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
 ```
 
 ### 解压
 ``` shell
 $ tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/
-$ tar -zxvf hadoop-3.1.3.tar.gz -C /usr/local/
-$ sudo chown -R hdp:hdp /usr/local/hadoop-3.1.3
+$ tar -zxvf hadoop-3.4.0.tar.gz -C /usr/local/
+$ sudo chown -R hdp:hdp /usr/local/hadoop-3.4.0
 ```
 
 ## 安装配置JDK
@@ -76,7 +76,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.341-b10, mixed mode)
 
 ``` shell
 vi /etc/profile
-export HADOOP_HOME=/usr/local/hadoop-3.1.3
+export HADOOP_HOME=/usr/local/hadoop-3.4.0
 export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 # export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
@@ -90,7 +90,7 @@ Source code repository https://github.com/apache/hadoop.git -r 706d88266abcee09e
 Compiled by stevel on 2023-03-15T15:56Z
 Compiled with protoc 3.7.1
 From source with checksum 6bbd9afcf4838a0eb12a5f189e9bd7
-This command was run using /usr/local/hadoop-3.1.3/share/hadoop/common/hadoop-common-3.3.5.jar
+This command was run using /usr/local/hadoop-3.4.0/share/hadoop/common/hadoop-common-3.3.5.jar
 
 ``` 
 
@@ -122,21 +122,19 @@ ssh localhost
 
 ### 配置Hadoop
 ``` shell
-[hdp@master ~]$ cd /usr/local/hadoop-3.1.3/etc/hadoop
+[hdp@master ~]$ cd /usr/local/hadoop-3.4.0/etc/hadoop
 [hdp@master hadoop]$ vi hadoop-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
 [hdp@master hadoop]$ vi yarn-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
 [hdp@master hadoop]$ vi workers
 master
-worker1
-worker2
 # 创建目录
-$ mkdir -p /usr/local/hadoop-3.1.3/tmp
-$ mkdir -p /usr/local/hadoop-3.1.3/tmp/dfs/name
-$ mkdir -p /usr/local/hadoop-3.1.3/tmp/dfs/data
-$ mkdir -p /usr/local/hadoop-3.1.3/tmp/dfs/namesecondary
-$ chmod -R +777 /usr/local/hadoop-3.1.3/tmp
+$ mkdir -p /usr/local/hadoop-3.4.0/tmp
+$ mkdir -p /usr/local/hadoop-3.4.0/tmp/dfs/name
+$ mkdir -p /usr/local/hadoop-3.4.0/tmp/dfs/data
+$ mkdir -p /usr/local/hadoop-3.4.0/tmp/dfs/namesecondary
+$ chmod -R +777 /usr/local/hadoop-3.4.0/tmp
 [hdp@master hadoop]$ vi core-site.xml
 ```
 
@@ -146,7 +144,7 @@ $ chmod -R +777 /usr/local/hadoop-3.1.3/tmp
 <configuration>
 <property>
          <name>hadoop.tmp.dir</name>
-         <value>file:/usr/local/hadoop-3.1.3/tmp</value>
+         <value>file:/usr/local/hadoop-3.4.0/tmp</value>
          <description>A base for other temporary directories.</description>
      </property>
      <property>
@@ -166,15 +164,15 @@ $ chmod -R +777 /usr/local/hadoop-3.1.3/tmp
 <configuration>	 
      <property>         
          <name>dfs.replication</name>         
-         <value>2</value>     
+         <value>1</value>     
      </property>     
      <property>         
          <name>dfs.namenode.name.dir</name>         
-         <value>/usr/local/hadoop-3.1.3/tmp/dfs/name</value>     
+         <value>/usr/local/hadoop-3.4.0/tmp/dfs/name</value>     
      </property>    
      <property>         
          <name>dfs.datanode.data.dir</name>         
-         <value>/usr/local/hadoop-3.1.3/tmp/dfs/data</value>
+         <value>/usr/local/hadoop-3.4.0/tmp/dfs/data</value>
      </property>
 	 
 	 <!-- 以下可不设置，为默认-->

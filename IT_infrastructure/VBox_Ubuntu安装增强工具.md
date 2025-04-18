@@ -5,8 +5,11 @@
 ``` shell
 # 不安装显示不了挂载的文件夹
 $sudo apt-get install virtualbox-guest-utils
+# 如下选项可选
+$sudo apt-get install libx11-dev libwayland-*
 # 将共享文件夹挂载（share是主机文件夹的名字，share_dir是虚拟机文件夹的名称）
 sudo mount -t vboxsf share share_dir
+# 设置开机自动挂载
 $sudo vi /etc/fstab
 gongxiang /mnt/shared vboxsf defaults 0 0
 
@@ -75,3 +78,7 @@ Guest Screen Resize) were not restarted automatically
 * 在【设置】-【显示】-【屏幕】-【扩展特性】，勾选“启用3D加速”，如不勾选，会报如下错误：
 
 > DnD: Error: Leaving VM window failed (VERR_TIMEOUT).
+
+
+## 参考
+[]()
