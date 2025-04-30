@@ -1,4 +1,4 @@
-# Linux安装Hadoop
+# Linux安装Hadoop伪分布式
 
 >  本机IP：192.168.1.190 (IP配置参考)
 

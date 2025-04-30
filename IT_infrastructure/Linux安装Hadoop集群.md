@@ -9,6 +9,11 @@ $ sudo adduser hadoop sudo
 ```
 
 ## 下载安装包
+
+* [Hadoop历史版本](https://archive.apache.org/dist/hadoop/common/)
+
+* [华为云jdk版本下载](https://mirrors.huaweicloud.com/java/jdk/)
+
 ``` shell
 $ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
 $ wget wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
@@ -87,9 +92,9 @@ ssh hdp@worker1
 ### 配置Hadoop
 ``` shell
 [hdp@master ~]$ cd /usr/local/hadoop-3.4.0/etc/hadoop/
-[hdp@master hadoop]$ vi hadoop-env.sh
+[hdp@master hadoop]$ vi hadoop-env.sh # sed -i '$a export JAVA_HOME=/usr/local/jdk1.8.0_202' hadoop-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
-[hdp@master hadoop]$ vi yarn-env.sh
+[hdp@master hadoop]$ vi yarn-env.sh # sed -i '$a export JAVA_HOME=/usr/local/jdk1.8.0_202' yarn-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
 [hdp@master hadoop]$ vi workers
 worker1
