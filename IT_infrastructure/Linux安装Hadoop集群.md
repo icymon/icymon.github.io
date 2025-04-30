@@ -44,12 +44,12 @@ export PATH=$HADOOP_HOME/sbin:$PATH
 export PATH=$HADOOP_HOME/bin:$PATH
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
-root@Tracker:/usr/local/hadoop-3.4.0# source /etc/profile
-hdp@Tracker:~$ java -version
+root@master:/usr/local/hadoop-3.4.0# source /etc/profile
+hdp@master:~$ java -version
 java version "1.8.0_202"
 Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
 Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
-hdp@Tracker:~$ hadoop version
+hdp@master:~$ hadoop version
 Hadoop 3.4.0
 Source code repository git@github.com:apache/hadoop.git -r bd8b77f398f626bb7791783192ee7a5dfaeec760
 Compiled by root on 2024-03-04T06:35Z
@@ -219,7 +219,7 @@ worker2
          <value>master:8030</value>     
      </property>     
      <property>         
-         <name>yarn.resourcemanager.resource-tracker.address</name>         
+         <name>yarn.resourcemanager.resource-master.address</name>         
          <value>master:8035</value>     
      </property>     
      <property>         
