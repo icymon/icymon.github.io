@@ -11,6 +11,8 @@
 
 * [CentOS7安装Hadoop(伪分布式)](CentOS7安装Hadoop_伪分布式.md)
 
+* [Linux安装Hadoop集群](Linux安装Hadoop集群.md)
+
 * [CentOS7安装MySQL8](CentOS7InstallMySQL8.md)
 
 * [CentOS7安装Qt5.12.3](CentOS7安装Qt5.12.3.md)

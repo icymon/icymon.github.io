@@ -140,7 +140,6 @@ export JAVA_HOME=/home/hdp/jdk1.8.0_341 # 添加变量
 [hdp@master hadoop]$ vi yarn-env.sh
 export JAVA_HOME=/home/hdp/jdk1.8.0_341 # 添加变量
 [hdp@master hadoop]$ vi workers
-master
 worker1
 worker2
 [hdp@master tmp]$ mkdir -p /home/hdp/hadoop-3.3.5/tmp

@@ -1,138 +1,100 @@
-# Linux安装Hadoop
-
->  本机IP：192.168.1.190 (IP配置参考)
-
-```
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo
-iface lo inet loopback
-
-# The primary network interface
-auto enp0s3
-iface enp0s3 inet static
-	address 192.168.1.190/24
-	network 192.168.1.0
-	broadcast 192.168.1.255
-	gateway 192.168.1.1
-	dns-servers 8.8.8.8
-	dns-servers 114.114.114.114
-```
-
+# Linux安装Hadoop3.4集群（三台）
 
 ## 设定hadoop用户
 ``` shell
 $ useradd -m hdp -s /bin/bash
 $ passwd hdp
+# 可为 hadoop 用户增加管理员权限，方便部署（可选）
+$ sudo adduser hadoop sudo
 ```
 
 ## 下载安装包
-
-* [Hadoop历史版本](https://archive.apache.org/dist/hadoop/common/)
-
-* [华为云jdk版本下载](https://mirrors.huaweicloud.com/java/jdk/)
-
 ``` shell
-$ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
-$ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.3.0/hadoop-3.3.0.tar.gz
+$ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
+$ wget wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
 ```
 
 ### 解压
 ``` shell
-$ tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/
-$ tar -zxvf hadoop-3.3.0.tar.gz -C /usr/local/
-$ sudo chown -R hdp:hdp /usr/local/hadoop-3.3.0
+# tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/
+# tar -zxvf hadoop-3.4.0.tar.gz  -C /usr/local/
+# chown -R hdp:hdp /usr/local/hadoop-3.4.0
 ```
 
 ## 安装配置JDK
 
 ### 配置Java
 
-> 在/etc/profile中添加环境变量
+> 在.bashrc中添加环境变量
 
 ``` shell
 vi /etc/profile
-# jdk configuration
+# java cfg
 export JAVA_HOME=/usr/local/jdk1.8.0_202
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-
-[hdp@master ~]$ source /etc/profile
-[hdp@master ~]$ java -version
-java version "1.8.0_341"
-Java(TM) SE Runtime Environment (build 1.8.0_341-b10)
-Java HotSpot(TM) 64-Bit Server VM (build 25.341-b10, mixed mode)
-``` 
-
-
-
-## 安装Hadoop
-
-> 在/etc/profile中添加环境变量
-
-``` shell
-vi /etc/profile
-export HADOOP_HOME=/usr/local/hadoop-3.3.0
-export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
+# hadoop cfg
+export HADOOP_HOME=/usr/local/hadoop-3.4.0
+export PATH=$HADOOP_HOME/sbin:$PATH
+export PATH=$HADOOP_HOME/bin:$PATH
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
-# export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
-export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
-
-[hdp@master ~]$ vi /etc/profile
-[hdp@master ~]$ source /etc/profile
-[hdp@master ~]$ hadoop version
-Hadoop 3.3.5
-Source code repository https://github.com/apache/hadoop.git -r 706d88266abcee09ed78fbaa0ad5f74d818ab0e9
-Compiled by stevel on 2023-03-15T15:56Z
-Compiled with protoc 3.7.1
-From source with checksum 6bbd9afcf4838a0eb12a5f189e9bd7
-This command was run using /usr/local/hadoop-3.3.0/share/hadoop/common/hadoop-common-3.3.5.jar
-
+export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
+root@Tracker:/usr/local/hadoop-3.4.0# source /etc/profile
+hdp@Tracker:~$ java -version
+java version "1.8.0_202"
+Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
+Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
+hdp@Tracker:~$ hadoop version
+Hadoop 3.4.0
+Source code repository git@github.com:apache/hadoop.git -r bd8b77f398f626bb7791783192ee7a5dfaeec760
+Compiled by root on 2024-03-04T06:35Z
+Compiled on platform linux-x86_64
+Compiled with protoc 3.21.12
+From source with checksum f7fe694a3613358b38812ae9c31114e
+This command was run using /usr/local/hadoop-3.4.0/share/hadoop/common/hadoop-common-3.4.0.jar
 ``` 
 
+## 配置三台机器基本环境
 
-## 配置免密登录
+### 将此环境复制两个worker：worker1和worker2
 
 > 修改主机名、IP、hosts文件中的指向
 
 ``` shell
 [hdp@master ~]$ vi /etc/hosts
-192.168.1.190 master
-127.0.0.1 localhost
+192.168.1.202 master
+192.168.1.203 worker1
+192.168.1.204 worker2
 ```
 
-### 配置免密登录
+### 配置三台主机之间的免密登录
 ``` shell
-ssh localhost # 生成.ssh目录
-ssh-keygen -t rsa
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys # 在master上执行
+ssh-keygen -t rsa # 在三台机器上分别执行
+scp ~/.ssh/id_rsa.pub hdp@master:~/.ssh/id_rsa.pub.worker1 # worker1上执行
+scp ~/.ssh/id_rsa.pub hdp@master:~/.ssh/id_rsa.pub.worker2 # woker2 上执行
+cat ~/.ssh/id_rsa.pub* >> ~/.ssh/authorized_keys # 在master上执行
+# 在master上执行，将authorized_keys发到worker1、worker2上
+scp ~/.ssh/authorized_keys hdp@worker1:~/.ssh/
+scp ~/.ssh/authorized_keys hdp@worker2:~/.ssh/
 
 # 测试免密登录
-ssh localhost
+ssh hdp@worker1
 
 ```
 
-## 配置Hadoop伪分布式
+## 配置Hadoop集群
 
 ### 配置Hadoop
 ``` shell
-[hdp@master ~]$ cd /usr/local/hadoop-3.3.0/etc/hadoop
+[hdp@master ~]$ cd /usr/local/hadoop-3.4.0/etc/hadoop/
 [hdp@master hadoop]$ vi hadoop-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
 [hdp@master hadoop]$ vi yarn-env.sh
 export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
 [hdp@master hadoop]$ vi workers
-master
-# 创建目录
-$ mkdir -p /usr/local/hadoop-3.3.0/tmp
-$ mkdir -p /usr/local/hadoop-3.3.0/tmp/dfs/name
-$ mkdir -p /usr/local/hadoop-3.3.0/tmp/dfs/data
-$ mkdir -p /usr/local/hadoop-3.3.0/tmp/dfs/namesecondary
-$ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
+worker1
+worker2
+[hdp@master tmp]$ mkdir -p /usr/local/hadoop-3.4.0/tmp
 [hdp@master hadoop]$ vi core-site.xml
 ```
 
@@ -142,7 +104,7 @@ $ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
 <configuration>
 <property>
          <name>hadoop.tmp.dir</name>
-         <value>file:/usr/local/hadoop-3.3.0/tmp</value>
+         <value>file:/usr/local/hadoop-3.4.0/tmp</value>
          <description>A base for other temporary directories.</description>
      </property>
      <property>
@@ -161,30 +123,29 @@ $ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
 ``` xml
 <configuration>	 
      <property>         
-         <name>dfs.replication</name>         
-         <value>1</value>     
+         <name>dfs.replication</name>
+			<!--对于Hadoop的分布式文件系统HDFS而言，一般都是采用冗余存储，冗余因子通常为3，也就是说，一份数据保存三份副本。所以 ，dfs.replication的值还是设置为 2-->
+         <value>2</value>     
      </property>     
      <property>         
          <name>dfs.namenode.name.dir</name>         
-         <value>/usr/local/hadoop-3.3.0/tmp/dfs/name</value>     
+         <value>/usr/local/hadoop-3.4.0/tmp/dfs/name</value>     
      </property>    
      <property>         
          <name>dfs.datanode.data.dir</name>         
-         <value>/usr/local/hadoop-3.3.0/tmp/dfs/data</value>
+         <value>/usr/local/hadoop-3.4.0/tmp/dfs/data</value>
      </property>
-	 
-	 <!-- 以下可不设置，为默认-->
+	 	 <!-- 2nn web端访问地址，一般放在另外一台从机上-->
+	 <property>
+		 <name>dfs.namenode.secondary.http-address</name>
+		 <value>worker1:9868</value>
+	 </property>
+	 <!-- 一般以上配置即可，其他默认 -->
 	 <!-- nn web端访问地址-->
 	 <property>
 		 <name>dfs.namenode.http-address</name>
 		 <value>master:9870</value>
 	 </property>
-	 <!-- 2nn web端访问地址-->
-	 <property>
-		 <name>dfs.namenode.secondary.http-address</name>
-		 <value>master:9868</value>
-	 </property>
-	 <!-- -->
 	 <property>
 		 <name>dfs.http.address</name>
 		 <value>master:9870</value>
@@ -208,7 +169,6 @@ $ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
 ```
 
 ``` shell
-# 以下可不设置，为默认
 [hdp@master hadoop]$ vi mapred-site.xml
 ```
 
@@ -224,7 +184,6 @@ $ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
 ```
 
 ``` shell
-# 以下可不设置，为默认
 [hdp@master hadoop]$ vi yarn-site.xml
 ```
 
@@ -232,18 +191,20 @@ $ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
 
 ``` xml
 <configuration>
-     <property>
-        <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>1024</value>
-     </property>
-	 <property>
+	<property>
         <name>yarn.resourcemanager.hostname</name>
         <value>master</value>
      </property>
      <property>
          <name>yarn.nodemanager.aux-services</name>
          <value>mapreduce_shuffle</value>
-     </property>   
+     </property> 
+	 <!-- 一般以上配置即可，其他默认 -->
+     <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>1024</value>
+     </property>
+	 
      <property> 	
          <name>yarn.resourcemanager.address</name> 	
          <value>master:8032</value>     
@@ -286,13 +247,15 @@ $ chmod -R +777 /usr/local/hadoop-3.3.0/tmp
 ```
 
 ``` shell
+# 将Hadoop配置文件复制到worker1和worker2机器上
+[hdp@master hadoop]$ scp -r /usr/local/hadoop-3.4.0/etc/hadoop/ hdp@worker1:/usr/local/hadoop-3.4.0/etc/
+[hdp@master hadoop]$ scp -r /usr/local/hadoop-3.4.0/etc/hadoop/ hdp@worker2:/usr/local/hadoop-3.4.0/etc/
+
 # 在机器上开放端口
-sudo firewall-cmd --zone=public --add-port=20001-20007/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=9870/tcp --permanent
-sudo ufw allow 20001:20007/tcp
-sudo ufw allow 8000:10000/tcp
-sudo systemctl restart ufw
+sudo firewall-cmd --zone=public --add-port=8000-10000/tcp --permanent
 sudo firewall-cmd --reload
+# ufw开放端口
+# ufw allow 8000:10000/tcp
 ```
 ### 启动Hadoop
 ``` shell
@@ -301,7 +264,7 @@ sudo firewall-cmd --reload
 [hdp@master hadoop]$ hdfs datanode -format
 # 启动Hadoop集群
 [hdp@master hadoop]$ start-all.sh
-[hdp@master ~]$ jps # jps -l 显示包名
+[hdp@master ~]$ jps
 18114 DataNode
 19044 Jps
 18666 NodeManager
@@ -330,14 +293,15 @@ $ chmod 600 ~/.ssh/*
 
 ## Tips
 
-192.168.1.190:9870  --访问hadoop集群前台页面
+192.168.1.202:9870  --访问hadoop集群前台页面
 
-192.168.1.190:8088  --访问hadoop的所有应用页面
+192.168.1.202:8088  --访问hadoop的所有应用页面
 
 还可以通过各个节点jps命令查看启动的任务节点状态。
 
 
-
+## 参考
+[Hadoop集群安装配置教程_Hadoop3.1.3_Ubuntu](https://dblab.xmu.edu.cn/blog/2775/)
 
 
 
