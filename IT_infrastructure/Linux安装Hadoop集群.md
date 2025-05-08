@@ -5,7 +5,7 @@
 $ useradd -m hdp -s /bin/bash
 $ passwd hdp
 # 可为 hadoop 用户增加管理员权限，方便部署（可选）
-$ sudo adduser hadoop sudo
+$ sudo adduser hdp sudo
 ```
 
 ## 下载安装包
@@ -282,19 +282,14 @@ sudo firewall-cmd --reload
 
 ## 问题记录
 
-### SSH不能免密登录
-
-如果还是需要密码登录，检查worker1上的/var/log/secure中的日志：
+### 主节点日志中出现如下错误
 ``` shell
-worker1 sshd[1383]: Authentication refused: bad ownership or modes for file /home/hdp/.ssh/authorized_keys
+2025-05-06 00:28:36,089 ERROR org.apache.hadoop.yarn.event.EventDispatcher: Returning, interrupted : java.lang.InterruptedException
+2025-05-06 00:28:36,089 ERROR org.apache.hadoop.yarn.server.resourcemanager.ResourceManager: Returning, interrupted : java.lang.InterruptedException: sleep interrupted
+...
+2025-05-06 00:28:36,094 ERROR org.apache.hadoop.security.token.delegation.AbstractDelegationTokenSecretManager: ExpiredTokenRemover received java.lang.InterruptedException: sleep interrupted
 ```
-
-修改三台服务器上ssh文件的权限：
-``` shell
-$ chmod 700 ~/.ssh
-$ chmod 600 ~/.ssh/*
-```
-
+* 对主节点内存扩容至4G
 
 ## Tips
 

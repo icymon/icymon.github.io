@@ -38,3 +38,18 @@ sudo dpkg -i mysql-server_8.0.30-1debian10_amd64.deb
 # sudo rm -rf /var/lib/mysql
 ```
 
+### Ubuntu2204安装mysql
+``` shell
+$ wget https://cdn.mysql.com/archives/mysql-5.7/mysql-server_5.7.27-1ubuntu19.04_amd64.deb-bundle.tar
+$ sudo dpkg -i mysql-common_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo apt install libaio1
+$ sudo dpkg -i mysql-community-client_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i libmysqlclient20_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i libmysqlclient-dev_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i libmysqld-dev_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i mysql-client_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo apt install libmecab2
+$ sudo dpkg -i mysql-community-server_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i mysql-server_5.7.27-1ubuntu19.04_amd64.deb
+$ systemctl status mysql
+```
