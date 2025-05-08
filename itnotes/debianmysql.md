@@ -48,7 +48,7 @@ $ sudo dpkg -i libmysqlclient20_5.7.27-1ubuntu19.04_amd64.deb
 $ sudo dpkg -i libmysqlclient-dev_5.7.27-1ubuntu19.04_amd64.deb
 $ sudo dpkg -i libmysqld-dev_5.7.27-1ubuntu19.04_amd64.deb
 $ sudo dpkg -i mysql-client_5.7.27-1ubuntu19.04_amd64.deb
-$ sudo apt install libmecab2
+$ sudo apt install libmecab2 # 配置root密码
 $ sudo dpkg -i mysql-community-server_5.7.27-1ubuntu19.04_amd64.deb
 $ sudo dpkg -i mysql-server_5.7.27-1ubuntu19.04_amd64.deb
 $ systemctl status mysql
