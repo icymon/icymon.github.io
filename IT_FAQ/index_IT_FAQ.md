@@ -18,3 +18,5 @@
 * [virtualbox_installation_failed](virtualbox_installation_failed.md)
 
 * [Ubuntu域名解析暂时失败](Ubuntu域名解析暂时失败.md)
+
+* [virtualbox卸载](virtualbox卸载.md)

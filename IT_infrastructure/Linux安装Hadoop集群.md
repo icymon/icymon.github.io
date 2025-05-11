@@ -16,7 +16,7 @@ $ sudo adduser hdp sudo
 
 ``` shell
 $ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
-$ wget wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
+$ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
 ```
 
 ### 解压
@@ -185,6 +185,19 @@ worker2
         <name>mapreduce.framework.name</name>
         <value>yarn</value>
     </property>
+	<!-- 3.4以上版本必须如下配置 -->
+	<property>
+  <name>yarn.app.mapreduce.am.env</name>
+  <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+</property>
+<property>
+  <name>mapreduce.map.env</name>
+  <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+</property>
+<property>
+  <name>mapreduce.reduce.env</name>
+  <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+</property>
 </configuration>
 ```
 
