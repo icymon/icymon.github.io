@@ -523,6 +523,53 @@ $ chmod 600 ~/.ssh/*
 
 还可以通过各个节点jps命令查看启动的任务节点状态。
 
+### hive 常见操作示例
+
+``` sql
+hive> show databases;
+hive> create database if not exists test_hive;
+hive> use test_hive;
+hive> create table students(studentno int, studentname string) partitioned by (dept string) row format delimited fields terminated by '\t';
+hive> DESC students;
+hive> ALTER TABLE students ADD PARTITION (dept="Computer Science");
+hive> show partitions students;
+OK
+dept=Computer Science
+Time taken: 0.155 seconds, Fetched: 1 row(s)
+hive> INSERT OVERWRITE TABLE students PARTITION (dept='Computer Science') VALUES (1002, '贺思雅');
+Query ID = hadoop_20250517010612_e2d82303-cc23-473f-b529-42f77e3e47a3
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1747412899650_0002, Tracking URL = http://hadoop01:8088/proxy/application_1747412899650_0002/
+Kill Command = /usr/local/hadoop/bin/mapred job  -kill job_1747412899650_0002
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2025-05-17 01:06:23,592 Stage-1 map = 0%,  reduce = 0%
+2025-05-17 01:06:30,804 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 1.73 sec
+2025-05-17 01:06:38,002 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 3.41 sec
+MapReduce Total cumulative CPU time: 3 seconds 410 msec
+Ended Job = job_1747412899650_0002
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://hadoop01:9000/user/hive/warehouse/test_hive.db/students/dept=Computer Science/.hive-staging_hive_2025-05-17_01-06-12_799_7613741112436369802-1/-ext-10000
+Loading data to table test_hive.students partition (dept=Computer Science)
+MapReduce Jobs Launched:
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 3.41 sec   HDFS Read: 16296 HDFS Write: 297 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 410 msec
+OK
+Time taken: 27.435 seconds
+hive> select * from students;
+OK
+1002    贺思雅  Computer Science
+Time taken: 0.155 seconds, Fetched: 1 row(s)
+```
 
 ## 参考
 [Hadoop集群安装配置教程_Hadoop3.1.3_Ubuntu](https://dblab.xmu.edu.cn/blog/2775/)
