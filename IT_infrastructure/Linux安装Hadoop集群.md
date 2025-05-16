@@ -531,7 +531,7 @@ hive> create database if not exists test_hive;
 hive> use test_hive;
 hive> create table students(studentno int, studentname string) partitioned by (dept string) row format delimited fields terminated by '\t';
 hive> DESC students;
-hive> ALTER TABLE students ADD PARTITION (dept="Computer Science");
+hive> ALTER TABLE students ADD PARTITION (dept="Computer Science"); # 这里有个问题，插入中文名称的部门会报错，待解决。
 hive> show partitions students;
 OK
 dept=Computer Science
