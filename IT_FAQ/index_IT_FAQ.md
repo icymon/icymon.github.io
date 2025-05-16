@@ -15,8 +15,9 @@
 
 * [bat中文乱码](bat中文乱码.md)
 
-* [virtualbox_installation_failed](virtualbox_installation_failed.md)
-
 * [Ubuntu域名解析暂时失败](Ubuntu域名解析暂时失败.md)
 
-* [virtualbox卸载](virtualbox卸载.md)
+
+* [vmware相关问题](vmware相关问题.md)
+
+* [VBOX相关问题](VBOX相关问题.md)

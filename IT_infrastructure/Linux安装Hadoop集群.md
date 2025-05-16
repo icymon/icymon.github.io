@@ -291,19 +291,230 @@ sudo firewall-cmd --reload
 18302 SecondaryNameNode
 # 出现NameNode和SecondaryNameNode等5项证明配置没有问题。
 ```
+## 配置zookeeper集群
 
+* 解压并授权安装目录
+
+``` shell
+# vi ~/.bashrc
+# ZOOKEEPER_HOME
+export ZK_HOME=/usr/local/zookeeper
+export PATH=$PATH:$ZK_HOME/bin
+# vi /usr/local/zookeeper/conf/zoo.cfg
+dataDir=/usr/local/zookeeper/zkdata
+server.1=hadoop01:2888:3888
+server.2=hadoop02:2888:3888
+server.3=hadoop03:2888:3888
+# vi /usr/local/zookeeper/zkdata/myid
+# 三台机器分别为1、2、3
+# 启动zookeeper
+zkServer.sh start
+# 查看状态
+zkServer.sh status
+```
+
+## 配置HBase集群
+``` shell
+# * 解压并授权安装目录
+$ sudo mv hbase-2.6.2 hbase
+$ sudo chown -R hadoop hbase
+$ mkdir -p /usr/local/hbase/conf/zookeeper
+# hbase-env.sh
+export JAVA_HOME=/usr/local/jdk1.8.0_202
+export HBASE_CLASSPATH=/usr/local/hbase/conf
+export HBASE_MANAGES_ZK=false
+export HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
+# hbase-site.xml
+<property>
+    <!-- Hbase Web UI 登录 -->
+    <name>hbase.master.info.port</name>
+    <value>60010</value>
+  </property>
+  <property>
+    <name>hbase.tmp.dir</name>
+    <value>/usr/local/hbase/tmp</value>
+  </property>
+  <property>
+    <name>hbase.unsafe.stream.capability.enforce</name>
+    <value>false</value>
+  </property>
+  <property>
+    <!-- Hbase写入数据的目录 -->
+    <name>hbase.rootdir</name>
+    <value>hdfs://hadoop01:9000/hbase </value>
+  </property>
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+  </property>
+  <property>
+    <!-- list of zookeeper -->
+<name>hbase.zookeeper.quorum</name>
+<value>hadoop01,hadoop02,hadoop03</value>
+</property>
+  <property>
+    <!--zookooper配置、日志等的存储位置 -->
+<name>hbase.zookeeper.property.dataDir</name>
+<value>/usr/local/hbase/zookeeper</value>
+</property>
+# regionservers
+hadoop01
+hadoop02
+hadoop03
+```
+## 配置Hive
+
+``` shell
+[hadoop@hadoop01 local]$ sudo mv apache-hive-3.1.3-bin hive
+[hadoop@hadoop01 local]$ sudo chown -R hadoop hive
+[hadoop@hadoop01 local]$ cd
+[hadoop@hadoop01 ~]$ vi .bashrc
+# HIVE_HOME
+export HIVE_HOME=/usr/local/hive
+export PATH=$PATH:$HIVE_HOME/bin
+export HIVE_CONF_DIR=/usr/local/hive/conf
+[hadoop@hadoop01 ~]$ source .bashrc
+[hadoop@hadoop01 ~]$ cd /usr/local/hive/conf
+[hadoop@hadoop01 conf]$ cp hive-default.xml.template hive-default.xml
+[hadoop@hadoop01 conf]$ cp hive-env.sh.template hive-env.sh
+[hadoop@hadoop01 conf]$ vi hive-env.sh
+export HADOOP_HEAPSIZE=204
+[hadoop@hadoop01 conf]$ vi hive-site.xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+<value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
+   <description>JDBC connect string for a JDBC metastore</description>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.jdbc.Driver</value>
+    <description>Driver class name for a JDBC metastore</description>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+    <description>username to use against metastore database</description>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>hive</value>
+    <description>password to use against metastore database</description>
+  </property>
+</configuration>
+
+[hadoop@hadoop01 ~]$ wget wget https://mirrors.aliyun.com/mysql/Connector-J/mysql-connector-java-5.1.48.tar.gz
+[hadoop@hadoop01 mysql-connector-java-5.1.48]$ tar -zxvf mysql-connector-java-5.1.48.tar.gz
+[hadoop@hadoop01 ~]$ cd mysql-connector-java-5.1.48/
+[hadoop@hadoop01 mysql-connector-java-5.1.48]$ cp mysql-connector-java-5.1.48-bin.jar /usr/local/hive/lib/
+
+# 卸载mariadb及自带的
+[hadoop@hadoop01 ~]$ rpm -qa|grep mariadb
+[hadoop@hadoop01 ~]$ rpm -qa|grep mysql
+mariadb-libs-5.5.68-1.el7.x86_64
+[hadoop@hadoop01 ~]$ sudo rpm -e --nodeps mariadb-libs-5.5.68-1.el7.x86_64
+# 下载及安装MySQL
+[hadoop@hadoop01 ~]$ wget https://mirrors.aliyun.com/mysql/MySQL-5.7/mysql-5.7.36-1.el6.x86_64.rpm-bundle.tar
+[hadoop@hadoop01 ~]$  tar -xvf mysql-5.7.36-1.el6.x86_64.rpm-bundle.tar
+mysql-community-client-5.7.36-1.el6.x86_64.rpm
+mysql-community-common-5.7.36-1.el6.x86_64.rpm
+mysql-community-devel-5.7.36-1.el6.x86_64.rpm
+mysql-community-embedded-5.7.36-1.el6.x86_64.rpm
+mysql-community-embedded-devel-5.7.36-1.el6.x86_64.rpm
+mysql-community-libs-5.7.36-1.el6.x86_64.rpm
+mysql-community-libs-compat-5.7.36-1.el6.x86_64.rpm
+mysql-community-server-5.7.36-1.el6.x86_64.rpm
+mysql-community-test-5.7.36-1.el6.x86_64.rpm
+[hadoop@hadoop01 ~]$ yum install libaio
+[hadoop@hadoop01 ~]$ sudo rpm -ivh mysql-community-common-5.7.36-1.el6.x86_64.rpm
+[hadoop@hadoop01 ~]$  sudo rpm -ivh mysql-community-libs-5.7.36-1.el6.x86_64.rpm
+[hadoop@hadoop01 ~]$ sudo rpm -ivh mysql-community-client-5.7.36-1.el6.x86_64.rpm
+[hadoop@hadoop01 ~]$ sudo rpm -ivh mysql-community-devel-5.7.36-1.el6.x86_64.rpm
+[hadoop@hadoop01 ~]$ sudo rpm -ivh mysql-community-server-5.7.36-1.el6.x86_64.rpm --force --nodeps
+[hadoop@hadoop01 ~]$ sudo systemctl start mysqld
+[hadoop@hadoop01 ~]$ systemctl status mysqld
+# 查询临时密码
+[hadoop@hadoop01 ~]$ sudo grep 'temporary password' /var/log/mysqld.log
+[hadoop@hadoop01 ~]$ mysql -uroot -hlocalhost -p
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '!Root123';
+mysql> flush privileges;
+mysql> CREATE USER 'hive'@'localhost' IDENTIFIED BY '!Hive123';
+mysql> CREATE DATABASE IF NOT EXISTS hive DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci;
+mysql> GRANT ALL PRIVILEGES ON hive.* TO 'hive'@'localhost' identified by '!Hive123';
+mysql> flush privileges;
+# 初始化元数据
+[hadoop@hadoop01 conf]$ schematool -dbType mysql -initSchema
+...
+Initialization script completed
+schemaTool completed
+# 启动hive
+$hive
+```
+
+
+
+* 将/usr/local/hbase 同步到hadoop02、hadoop03两台虚拟机上，并做好授权。
+
+``` shell
+$start-all.sh # 主节点启动hadoop
+$zkServer.sh start #每个节点都需要执行
+$start-hbase.sh # 主节点启动hbase
+# 以下是启动后每个节点的进程情况
+[hadoop@hadoop01 local]$ jps
+3008 HRegionServer
+3172 Jps
+2870 HMaster
+2135 ResourceManager
+1692 NameNode
+2269 NodeManager
+1806 DataNode
+2686 QuorumPeerMain
+[hadoop@hadoop02 local]$ jps
+1636 HRegionServer
+1365 NodeManager
+1803 Jps
+1260 SecondaryNameNode
+[hadoop@hadoop03 local]$ jps
+1155 DataNode
+1492 HRegionServer
+1399 QuorumPeerMain
+1705 Jps
+1259 NodeManager
+
+```
 
 ## 问题记录
 
-### 主节点日志中出现如下错误
-``` shell
-2025-05-06 00:28:36,089 ERROR org.apache.hadoop.yarn.event.EventDispatcher: Returning, interrupted : java.lang.InterruptedException
-2025-05-06 00:28:36,089 ERROR org.apache.hadoop.yarn.server.resourcemanager.ResourceManager: Returning, interrupted : java.lang.InterruptedException: sleep interrupted
-...
-2025-05-06 00:28:36,094 ERROR org.apache.hadoop.security.token.delegation.AbstractDelegationTokenSecretManager: ExpiredTokenRemover received java.lang.InterruptedException: sleep interrupted
-```
-* 对主节点内存扩容至4G
+### SSH不能免密登录
 
+如果还是需要密码登录，检查worker1上的/var/log/secure中的日志：
+``` shell
+worker1 sshd[1383]: Authentication refused: bad ownership or modes for file /home/hdp/.ssh/authorized_keys
+```
+
+修改三台服务器上ssh文件的权限：
+``` shell
+$ chmod 700 ~/.ssh
+$ chmod 600 ~/.ssh/*
+```
+
+# HIVE 报错：Exception in thread "main" java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument
+
+* 确保 Hive 中使用的 Guava 库版本与 Hadoop 中的版本一致。通常，版本不一致会导致 NoSuchMethodError。 
+
+``` shell
+[hadoop@hadoop01 conf]$ find $HADOOP_HOME -name "guava-*.jar"
+/usr/local/hadoop/share/hadoop/yarn/csi/lib/guava-20.0.jar
+/usr/local/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar
+/usr/local/hadoop/share/hadoop/hdfs/lib/guava-27.0-jre.jar
+[hadoop@hadoop01 conf]$ find $HIVE_HOME -name "guava-*.jar"
+/usr/local/hive/lib/guava-19.0.jar
+[hadoop@hadoop01 conf]$ mkdir /usr/local/hive/lib/bak
+[hadoop@hadoop01 conf]$ mv /usr/local/hive/lib/guava-19.0.jar /usr/local/hive/lib/bak/
+[hadoop@hadoop01 conf]$ cp /usr/local/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /usr/local/hive/lib/
+```
 ## Tips
 
 192.168.1.202:9870  --访问hadoop集群前台页面

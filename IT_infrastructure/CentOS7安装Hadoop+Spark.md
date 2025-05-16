@@ -325,7 +325,7 @@ sudo firewall-cmd --reload
 export SCALA_HOME=/home/hdp/scala3-3.2.2
 export JAVA_HOME=/home/hdp/jdk1.8.0_341
 export HADOOP_INSTALL=/home/hdp/hadoop-3.3.5
-export HADOOP_CONF_DIR=$HADOOP_INSTALL$/etc/hadoop
+export HADOOP_CONF_DIR=$HADOOP_INSTALL/etc/hadoop
 SPARK_MASTER_IP=master
 SPARK_LOCAL_DIRS=/home/hdp/spark-3.4.0-bin-hadoop3
 SPART_DRIVER_MEMORY=512m
