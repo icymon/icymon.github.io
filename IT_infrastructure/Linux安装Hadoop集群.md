@@ -500,7 +500,7 @@ $ chmod 700 ~/.ssh
 $ chmod 600 ~/.ssh/*
 ```
 
-# HIVE 报错：Exception in thread "main" java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument
+### HIVE 报错：Exception in thread "main" java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument
 
 * 确保 Hive 中使用的 Guava 库版本与 Hadoop 中的版本一致。通常，版本不一致会导致 NoSuchMethodError。 
 
@@ -515,6 +515,7 @@ $ chmod 600 ~/.ssh/*
 [hadoop@hadoop01 conf]$ mv /usr/local/hive/lib/guava-19.0.jar /usr/local/hive/lib/bak/
 [hadoop@hadoop01 conf]$ cp /usr/local/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /usr/local/hive/lib/
 ```
+
 ## Tips
 
 192.168.1.202:9870  --访问hadoop集群前台页面
@@ -569,6 +570,22 @@ hive> select * from students;
 OK
 1002    贺思雅  Computer Science
 Time taken: 0.155 seconds, Fetched: 1 row(s)
+```
+
+### ubuntu安装MySQL5.7
+``` shell
+$ wget https://cdn.mysql.com/archives/mysql-5.7/mysql-server_5.7.27-1ubuntu19.04_amd64.deb-bundle.tar
+$ sudo dpkg -i mysql-common_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo apt install libaio1
+$ sudo dpkg -i mysql-community-client_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i libmysqlclient20_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i libmysqlclient-dev_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i libmysqld-dev_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i mysql-client_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo apt install libmecab2 # 配置root密码
+$ sudo dpkg -i mysql-community-server_5.7.27-1ubuntu19.04_amd64.deb
+$ sudo dpkg -i mysql-server_5.7.27-1ubuntu19.04_amd64.deb
+$ systemctl status mysql
 ```
 
 ## 参考
