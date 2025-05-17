@@ -6,6 +6,7 @@ $ useradd -m hdp -s /bin/bash
 $ passwd hdp
 # 可为 hadoop 用户增加管理员权限，方便部署（可选）
 $ sudo adduser hdp sudo
+# sudo usermod -aG sudo username # CentOS系
 ```
 
 ## 下载安装包
@@ -116,6 +117,11 @@ worker2
          <name>fs.defaultFS</name>
          <value>hdfs://master:9000</value>
      </property>
+	  <!-- 配置HDFS网页登录使用的静态用户为hadoop，不配置网页端无法上传文件 -->
+    <property>
+        <name>hadoop.http.staticuser.user</name>
+        <value>hadoop</value>
+    </property>
 </configuration>
 ```
 
@@ -262,6 +268,14 @@ worker2
          <value>master:8041</value>     
      </property>	 
 </configuration>
+```
+
+* 添加Java环境
+
+``` shell
+sed -i '$a export JAVA_HOME=/usr/local/jdk' hadoop-env.sh
+sed -i '$a export JAVA_HOME=/usr/local/jdk' yarn-env.sh
+sed -i '$a export JAVA_HOME=/usr/local/jdk' mapred-env.sh
 ```
 
 ``` shell
