@@ -417,6 +417,10 @@ export HADOOP_HEAPSIZE=204
     <value>hive</value>
     <description>password to use against metastore database</description>
   </property>
+  <property>
+<name>hive.server2.enable.doAs</name>
+<value>false</value>
+  </property>
 </configuration>
 
 [hadoop@hadoop01 ~]$ wget wget https://mirrors.aliyun.com/mysql/Connector-J/mysql-connector-java-5.1.48.tar.gz
