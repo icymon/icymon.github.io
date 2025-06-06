@@ -23,6 +23,8 @@
 
 * [Linux安装Hadoop集群](Linux安装Hadoop集群.md)
 
+* [Linux安装MySQL](Linux安装MySQL.md)
+
 * [MySQL主从复制（Replication）](MySQLReplication.md)
 
 * [Qt安卓环境搭建(Windows)](Qt安卓环境搭建.md)
