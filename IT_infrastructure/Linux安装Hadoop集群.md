@@ -329,6 +329,9 @@ zkServer.sh status
 
 ## 配置HBase集群
 ``` shell
+# vi ~/.bashrc
+# hbase cfg
+export PATH=$PATH:/usr/local/hbase/bin
 # * 解压并授权安装目录
 $ sudo mv hbase-2.6.2 hbase
 $ sudo chown -R hadoop hbase
@@ -355,7 +358,7 @@ export HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
   <property>
     <!-- Hbase写入数据的目录 -->
     <name>hbase.rootdir</name>
-    <value>hdfs://hadoop01:9000/hbase </value>
+    <value>hdfs://hadoop01:9000/hbase</value>
   </property>
   <property>
     <name>hbase.cluster.distributed</name>
@@ -423,7 +426,7 @@ export HADOOP_HEAPSIZE=204
   </property>
 </configuration>
 
-[hadoop@hadoop01 ~]$ wget wget https://mirrors.aliyun.com/mysql/Connector-J/mysql-connector-java-5.1.48.tar.gz
+[hadoop@hadoop01 ~]$ wget https://mirrors.aliyun.com/mysql/Connector-J/mysql-connector-java-5.1.48.tar.gz
 [hadoop@hadoop01 mysql-connector-java-5.1.48]$ tar -zxvf mysql-connector-java-5.1.48.tar.gz
 [hadoop@hadoop01 ~]$ cd mysql-connector-java-5.1.48/
 [hadoop@hadoop01 mysql-connector-java-5.1.48]$ cp mysql-connector-java-5.1.48-bin.jar /usr/local/hive/lib/
@@ -435,7 +438,7 @@ mariadb-libs-5.5.68-1.el7.x86_64
 [hadoop@hadoop01 ~]$ sudo rpm -e --nodeps mariadb-libs-5.5.68-1.el7.x86_64
 # 下载及安装MySQL
 [hadoop@hadoop01 ~]$ wget https://mirrors.aliyun.com/mysql/MySQL-5.7/mysql-5.7.36-1.el6.x86_64.rpm-bundle.tar
-[hadoop@hadoop01 ~]$  tar -xvf mysql-5.7.36-1.el6.x86_64.rpm-bundle.tar
+[hadoop@hadoop01 ~]$ tar -xvf mysql-5.7.36-1.el6.x86_64.rpm-bundle.tar
 mysql-community-client-5.7.36-1.el6.x86_64.rpm
 mysql-community-common-5.7.36-1.el6.x86_64.rpm
 mysql-community-devel-5.7.36-1.el6.x86_64.rpm
@@ -533,6 +536,23 @@ $ chmod 600 ~/.ssh/*
 [hadoop@hadoop01 conf]$ mv /usr/local/hive/lib/guava-19.0.jar /usr/local/hive/lib/bak/
 [hadoop@hadoop01 conf]$ cp /usr/local/hadoop/share/hadoop/common/lib/guava-27.0-jre.jar /usr/local/hive/lib/
 ```
+### HBase建表时报错：ERROR: org.apache.hadoop.hbase.PleaseHoldException: Master is initializing
+
+* 关闭hbase集群，并删除zookeeper下hbase节点，删除hdfs上/hbase目录，重新启动hbase集群。
+
+### HBase建表时报错：NoNode for /hbase/master
+
+参考：[HBase 提示：ERROR: KeeperErrorCode = NoNode for /hbase/master](https://www.cnblogs.com/xyzai/p/12695116.html)
+
+* 1、检查Hadoop、zookeeper、hbase的运行情况；
+* 2、list报错时，hbase-site.xml添加配置；
+``` xml
+<property>
+<name>hbase.unsafe.stream.capability.enforce</name>
+<value>false</value>
+</property>
+```
+* 3、删除dfs上的hbase目录和zookeeper上的/hbase znode，重启hbase。
 
 ## Tips
 

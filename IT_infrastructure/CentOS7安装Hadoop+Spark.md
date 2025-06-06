@@ -120,7 +120,7 @@ worker2
 ssh-keygen -t rsa # 在三台机器上分别执行
 scp ~/.ssh/id_rsa.pub hdp@master:~/.ssh/id_rsa.pub.worker1 # worker1上执行
 scp ~/.ssh/id_rsa.pub hdp@master:~/.ssh/id_rsa.pub.worker2 # woker2 上执行
-cat ~/.ssh/id_rsa.pub* >> ~/.ssh/authorized_keys # 在master上执行
+cat ~/.ssh/*.pub >> ~/.ssh/authorized_keys # 在master上执行
 # 在master上执行，将authorized_keys发到worker1、worker2上
 scp ~/.ssh/authorized_keys hdp@worker1:~/.ssh/
 scp ~/.ssh/authorized_keys hdp@worker2:~/.ssh/
