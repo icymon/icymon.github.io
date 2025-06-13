@@ -35,14 +35,13 @@ $ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.ta
 
 ``` shell
 vi ~/.bashrc
-# java cfg
+# java environment configuration
 export JAVA_HOME=/usr/local/jdk
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-# hadoop cfg
+# hadoop environment configuration
 export HADOOP_HOME=/usr/local/hadoop
-export PATH=$HADOOP_HOME/sbin:$PATH
-export PATH=$HADOOP_HOME/bin:$PATH
+export PATH=export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
 root@master:/usr/local/hadoop# source ~/.bashrc
@@ -326,7 +325,7 @@ sudo firewall-cmd --reload
 
 ``` shell
 # vi ~/.bashrc
-# ZOOKEEPER_HOME
+# zookeeper environment configuration
 export ZK_HOME=/usr/local/zookeeper
 export PATH=$PATH:$ZK_HOME/bin
 # vi /usr/local/zookeeper/conf/zoo.cfg
@@ -345,7 +344,7 @@ zkServer.sh status
 ## 配置HBase集群
 ``` shell
 # vi ~/.bashrc
-# hbase cfg
+# hbase environment configuration
 export PATH=$PATH:/usr/local/hbase/bin
 # * 解压并授权安装目录
 $ sudo mv hbase-2.6.2 hbase
@@ -401,7 +400,7 @@ hadoop03
 [hadoop@hadoop01 local]$ sudo chown -R hadoop hive
 [hadoop@hadoop01 local]$ cd
 [hadoop@hadoop01 ~]$ vi .bashrc
-# HIVE_HOME
+# hive environment configuration
 export HIVE_HOME=/usr/local/hive
 export PATH=$PATH:$HIVE_HOME/bin
 export HIVE_CONF_DIR=/usr/local/hive/conf
