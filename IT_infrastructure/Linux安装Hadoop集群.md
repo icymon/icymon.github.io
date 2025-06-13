@@ -2,10 +2,10 @@
 
 ## 设定hadoop用户
 ``` shell
-$ useradd -m hdp -s /bin/bash
-$ passwd hdp
+$ useradd -m hadoop -s /bin/bash
+$ passwd hadoop
 # 可为 hadoop 用户增加管理员权限，方便部署（可选）
-$ sudo adduser hdp sudo
+$ sudo adduser hadoop sudo
 # sudo usermod -aG sudo username # CentOS系
 ```
 
@@ -16,15 +16,15 @@ $ sudo adduser hdp sudo
 * [华为云jdk版本下载](https://mirrors.huaweicloud.com/java/jdk/)
 
 ``` shell
-$ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.4.0/hadoop-3.4.0.tar.gz
+$ wget https://mirrors.aliyun.com/apache/hadoop/common/stable/hadoop-3.4.1.tar.gz
 $ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.tar.gz
 ```
 
 ### 解压
 ``` shell
 # tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/
-# tar -zxvf hadoop-3.4.0.tar.gz  -C /usr/local/
-# chown -R hdp:hdp /usr/local/hadoop-3.4.0
+# tar -zxvf hadoop-3.4.1.tar.gz  -C /usr/local/
+# chown -R hadoop:hadoop /usr/local/hadoop
 ```
 
 ## 安装配置JDK
@@ -34,30 +34,20 @@ $ wget https://mirrors.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-linux-x64.ta
 > 在.bashrc中添加环境变量
 
 ``` shell
-vi /etc/profile
+vi ~/.bashrc
 # java cfg
-export JAVA_HOME=/usr/local/jdk1.8.0_202
+export JAVA_HOME=/usr/local/jdk
 export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 # hadoop cfg
-export HADOOP_HOME=/usr/local/hadoop-3.4.0
+export HADOOP_HOME=/usr/local/hadoop
 export PATH=$HADOOP_HOME/sbin:$PATH
 export PATH=$HADOOP_HOME/bin:$PATH
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
-root@master:/usr/local/hadoop-3.4.0# source /etc/profile
-hdp@master:~$ java -version
-java version "1.8.0_202"
-Java(TM) SE Runtime Environment (build 1.8.0_202-b08)
-Java HotSpot(TM) 64-Bit Server VM (build 25.202-b08, mixed mode)
-hdp@master:~$ hadoop version
-Hadoop 3.4.0
-Source code repository git@github.com:apache/hadoop.git -r bd8b77f398f626bb7791783192ee7a5dfaeec760
-Compiled by root on 2024-03-04T06:35Z
-Compiled on platform linux-x86_64
-Compiled with protoc 3.21.12
-From source with checksum f7fe694a3613358b38812ae9c31114e
-This command was run using /usr/local/hadoop-3.4.0/share/hadoop/common/hadoop-common-3.4.0.jar
+root@master:/usr/local/hadoop# source ~/.bashrc
+$ java -version
+$ hadoop version
 ``` 
 
 ## 配置三台机器基本环境
@@ -67,7 +57,7 @@ This command was run using /usr/local/hadoop-3.4.0/share/hadoop/common/hadoop-co
 > 修改主机名、IP、hosts文件中的指向
 
 ``` shell
-[hdp@master ~]$ vi /etc/hosts
+[hadoop@master ~]$ vi /etc/hosts
 192.168.1.202 master
 192.168.1.203 worker1
 192.168.1.204 worker2
@@ -76,32 +66,32 @@ This command was run using /usr/local/hadoop-3.4.0/share/hadoop/common/hadoop-co
 ### 配置三台主机之间的免密登录
 ``` shell
 ssh-keygen -t rsa # 在三台机器上分别执行
-scp ~/.ssh/id_rsa.pub hdp@master:~/.ssh/id_rsa.pub.worker1 # worker1上执行
-scp ~/.ssh/id_rsa.pub hdp@master:~/.ssh/id_rsa.pub.worker2 # woker2 上执行
-cat ~/.ssh/id_rsa.pub* >> ~/.ssh/authorized_keys # 在master上执行
+scp ~/.ssh/id_rsa.pub /.ssh/worker1.pub # worker1上执行
+scp ~/.ssh/id_rsa.pub /.ssh/worker2.pub # woker2 上执行
+cat ~/.ssh/*.pub >> ~/.ssh/authorized_keys # 在master上执行
 # 在master上执行，将authorized_keys发到worker1、worker2上
-scp ~/.ssh/authorized_keys hdp@worker1:~/.ssh/
-scp ~/.ssh/authorized_keys hdp@worker2:~/.ssh/
-
+scp ~/.ssh/authorized_keys hadoop@worker1:~/.ssh/
+scp ~/.ssh/authorized_keys hadoop@worker2:~/.ssh/
+# 如果使CentOS，需要修改.ssh目录权限
+chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
 # 测试免密登录
-ssh hdp@worker1
-
+ssh hadoop@worker1
 ```
 
 ## 配置Hadoop集群
 
 ### 配置Hadoop
 ``` shell
-[hdp@master ~]$ cd /usr/local/hadoop-3.4.0/etc/hadoop/
-[hdp@master hadoop]$ vi hadoop-env.sh # sed -i '$a export JAVA_HOME=/usr/local/jdk1.8.0_202' hadoop-env.sh
-export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
-[hdp@master hadoop]$ vi yarn-env.sh # sed -i '$a export JAVA_HOME=/usr/local/jdk1.8.0_202' yarn-env.sh
-export JAVA_HOME=/usr/local/jdk1.8.0_202 # 添加变量
-[hdp@master hadoop]$ vi workers
+[hadoop@master ~]$ cd /usr/local/hadoop/etc/hadoop/
+[hadoop@master hadoop]$ vi hadoop-env.sh # sed -i '$a export JAVA_HOME=/usr/local/jdk' hadoop-env.sh
+export JAVA_HOME=/usr/local/jdk # 添加变量
+[hadoop@master hadoop]$ vi yarn-env.sh # sed -i '$a export JAVA_HOME=/usr/local/jdk' yarn-env.sh
+export JAVA_HOME=/usr/local/jdk # 添加变量
+[hadoop@master hadoop]$ vi workers
 worker1
 worker2
-[hdp@master tmp]$ mkdir -p /usr/local/hadoop-3.4.0/tmp
-[hdp@master hadoop]$ vi core-site.xml
+[hadoop@master tmp]$ mkdir -p /usr/local/hadoop/tmp
+[hadoop@master hadoop]$ vi core-site.xml
 ```
 
 添加如下内容
@@ -110,7 +100,7 @@ worker2
 <configuration>
 <property>
          <name>hadoop.tmp.dir</name>
-         <value>file:/usr/local/hadoop-3.4.0/tmp</value>
+         <value>file:/usr/local/hadoop/tmp</value>
          <description>A base for other temporary directories.</description>
      </property>
      <property>
@@ -126,7 +116,7 @@ worker2
 ```
 
 ``` shell
-[hdp@master hadoop]$ vi hdfs-site.xml
+[hadoop@master hadoop]$ vi hdfs-site.xml
 ```
 
 添加如下内容
@@ -140,17 +130,19 @@ worker2
      </property>     
      <property>         
          <name>dfs.namenode.name.dir</name>         
-         <value>/usr/local/hadoop-3.4.0/tmp/dfs/name</value>     
+         <value>/usr/local/hadoop/tmp/dfs/name</value>     
      </property>    
      <property>         
          <name>dfs.datanode.data.dir</name>         
-         <value>/usr/local/hadoop-3.4.0/tmp/dfs/data</value>
+         <value>/usr/local/hadoop/tmp/dfs/data</value>
      </property>
 	 	 <!-- 2nn web端访问地址，一般放在另外一台从机上-->
 	 <property>
 		 <name>dfs.namenode.secondary.http-address</name>
 		 <value>worker1:9868</value>
 	 </property>
+	 
+	 
 	 <!-- 一般以上配置即可，其他默认 -->
 	 <!-- nn web端访问地址-->
 	 <property>
@@ -180,7 +172,7 @@ worker2
 ```
 
 ``` shell
-[hdp@master hadoop]$ vi mapred-site.xml
+[hadoop@master hadoop]$ vi mapred-site.xml
 ```
 
 添加如下内容
@@ -204,11 +196,28 @@ worker2
   <name>mapreduce.reduce.env</name>
   <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
 </property>
+<!-- 如果mapreduce任务报内存错误，需加入如下参数，具体数值视情况而定 -->
+<property>
+  <name>mapreduce.map.memory.mb</name>
+  <value>1024</value>
+</property>
+<property>
+  <name>mapreduce.map.java.opts</name>
+  <value>-Xmx512m</value>
+</property>
+<property>
+  <name>mapreduce.reduce.memory.mb</name>
+  <value>1024</value>
+</property>
+<property>
+  <name>mapreduce.reduce.java.opts</name>
+  <value>-Xmx512m</value>
+</property>
 </configuration>
 ```
 
 ``` shell
-[hdp@master hadoop]$ vi yarn-site.xml
+[hadoop@master hadoop]$ vi yarn-site.xml
 ```
 
 添加如下内容
@@ -223,6 +232,12 @@ worker2
          <name>yarn.nodemanager.aux-services</name>
          <value>mapreduce_shuffle</value>
      </property> 
+	 <!-- mapreduce任务内存不足时，视情况加入如下配置 -->
+	 <property>
+  <name>yarn.nodemanager.vmem-pmem-ratio</name>
+  <value>4</value>
+</property>
+	 
 	 <!-- 一般以上配置即可，其他默认 -->
      <property>
         <name>yarn.nodemanager.resource.memory-mb</name>
@@ -280,8 +295,8 @@ sed -i '$a export JAVA_HOME=/usr/local/jdk' mapred-env.sh
 
 ``` shell
 # 将Hadoop配置文件复制到worker1和worker2机器上
-[hdp@master hadoop]$ scp -r /usr/local/hadoop-3.4.0/etc/hadoop/ hdp@worker1:/usr/local/hadoop-3.4.0/etc/
-[hdp@master hadoop]$ scp -r /usr/local/hadoop-3.4.0/etc/hadoop/ hdp@worker2:/usr/local/hadoop-3.4.0/etc/
+[hadoop@master hadoop]$ scp -r /usr/local/hadoop/etc/hadoop/ hadoop@worker1:/usr/local/hadoop/etc/
+[hadoop@master hadoop]$ scp -r /usr/local/hadoop/etc/hadoop/ hadoop@worker2:/usr/local/hadoop/etc/
 
 # 在机器上开放端口
 sudo firewall-cmd --zone=public --add-port=8000-10000/tcp --permanent
@@ -292,11 +307,11 @@ sudo firewall-cmd --reload
 ### 启动Hadoop
 ``` shell
 # 启动Hadoop
-[hdp@master hadoop]$ hdfs namenode -format
-[hdp@master hadoop]$ hdfs datanode -format
+[hadoop@master hadoop]$ hdfs namenode -format
+[hadoop@master hadoop]$ hdfs datanode -format
 # 启动Hadoop集群
-[hdp@master hadoop]$ start-all.sh
-[hdp@master ~]$ jps
+[hadoop@master hadoop]$ start-all.sh
+[hadoop@master ~]$ jps
 18114 DataNode
 19044 Jps
 18666 NodeManager
@@ -337,7 +352,7 @@ $ sudo mv hbase-2.6.2 hbase
 $ sudo chown -R hadoop hbase
 $ mkdir -p /usr/local/hbase/conf/zookeeper
 # hbase-env.sh
-export JAVA_HOME=/usr/local/jdk1.8.0_202
+export JAVA_HOME=/usr/local/jdk
 export HBASE_CLASSPATH=/usr/local/hbase/conf
 export HBASE_MANAGES_ZK=false
 export HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
@@ -512,7 +527,7 @@ $start-hbase.sh # 主节点启动hbase
 
 如果还是需要密码登录，检查worker1上的/var/log/secure中的日志：
 ``` shell
-worker1 sshd[1383]: Authentication refused: bad ownership or modes for file /home/hdp/.ssh/authorized_keys
+worker1 sshd[1383]: Authentication refused: bad ownership or modes for file /home/hadoop/.ssh/authorized_keys
 ```
 
 修改三台服务器上ssh文件的权限：

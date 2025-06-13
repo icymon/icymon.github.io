@@ -75,6 +75,15 @@ Guest Screen Resize) were not restarted automatically
 
 ``` 
 
+``` shell
+# Ubuntu 2204安装增强工具
+# 安装编译环境
+
+# 安装增强工具
+$ sudo ./VBoxLinuxAdditions.run 
+
+```
+
 * 在【设置】-【显示】-【屏幕】-【扩展特性】，勾选“启用3D加速”，如不勾选，会报如下错误：
 
 > DnD: Error: Leaving VM window failed (VERR_TIMEOUT).
