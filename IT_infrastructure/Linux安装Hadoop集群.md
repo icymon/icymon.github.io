@@ -41,7 +41,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 # hadoop environment configuration
 export HADOOP_HOME=/usr/local/hadoop
-export PATH=export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export JAVA_LIBRARY_PATH=$HADOOP_HOME/lib/native
 root@master:/usr/local/hadoop# source ~/.bashrc
