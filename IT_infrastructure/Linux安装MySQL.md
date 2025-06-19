@@ -95,7 +95,11 @@ $ sudo dpkg -i mysql-community-server_5.7.27-1ubuntu19.04_amd64.deb
 $ sudo dpkg -i mysql-server_5.7.27-1ubuntu19.04_amd64.deb
 $ systemctl status mysql
 ```
-
+## Ubuntu22.04 安装 MySQL8.0
+``` shell
+$ sudo apt install mysql-server
+$ sudo mysql_secure_installation # 试验环境下，不用安装密码验证插件，这样可以设置简单密码
+```
 
 # 创建测试库，并插入数据
 
