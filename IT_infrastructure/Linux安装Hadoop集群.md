@@ -97,20 +97,20 @@ worker2
 
 ``` xml
 <configuration>
-<property>
-         <name>hadoop.tmp.dir</name>
-         <value>file:/usr/local/hadoop/tmp</value>
-         <description>A base for other temporary directories.</description>
-     </property>
-     <property>
-         <name>fs.defaultFS</name>
-         <value>hdfs://master:9000</value>
-     </property>
-	  <!-- 配置HDFS网页登录使用的静态用户为hadoop，不配置网页端无法上传文件 -->
-    <property>
-        <name>hadoop.http.staticuser.user</name>
-        <value>hadoop</value>
-    </property>
+	<property>
+		<name>hadoop.tmp.dir</name>
+		<value>file:/usr/local/hadoop/tmp</value>
+		<description>A base for other temporary directories.</description>
+	</property>
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://master:9000</value>
+	</property>
+	<!-- 配置HDFS网页登录使用的静态用户为hadoop，不配置网页端无法上传文件 -->
+	<property>
+		<name>hadoop.http.staticuser.user</name>
+		<value>hadoop</value>
+	</property>
 </configuration>
 ```
 
@@ -121,52 +121,49 @@ worker2
 添加如下内容
 
 ``` xml
-<configuration>	 
-     <property>         
-         <name>dfs.replication</name>
-			<!--对于Hadoop的分布式文件系统HDFS而言，一般都是采用冗余存储，冗余因子通常为3，也就是说，一份数据保存三份副本。所以 ，dfs.replication的值还是设置为 2-->
-         <value>2</value>     
-     </property>     
-     <property>         
-         <name>dfs.namenode.name.dir</name>         
-         <value>/usr/local/hadoop/tmp/dfs/name</value>     
-     </property>    
-     <property>         
-         <name>dfs.datanode.data.dir</name>         
-         <value>/usr/local/hadoop/tmp/dfs/data</value>
-     </property>
-	 	 <!-- 2nn web端访问地址，一般放在另外一台从机上-->
-	 <property>
-		 <name>dfs.namenode.secondary.http-address</name>
-		 <value>worker1:9868</value>
-	 </property>
-	 
-	 
-	 <!-- 一般以上配置即可，其他默认 -->
-	 <!-- nn web端访问地址-->
-	 <property>
-		 <name>dfs.namenode.http-address</name>
-		 <value>master:9870</value>
-	 </property>
-	 <property>
-		 <name>dfs.http.address</name>
-		 <value>master:9870</value>
-	 </property>
-	
-	 <!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address -->
-	 <!-- worker中要改主机名为worker的hostname -->
-	 <property>
-		 <name>dfs.datanode.address</name>
-		 <value>master:9866</value>
-	 </property>
-	 <property>
-		 <name>dfs.datanode.ipc.address</name>
-		 <value>master:9867</value>
-	 </property>
-	 <property>
-		 <name>dfs.datanode.http.address</name>
-		 <value>master:9864</value>
-	 </property>
+<configuration>
+	<property>
+		<name>dfs.replication</name>
+		<!--对于Hadoop的分布式文件系统HDFS而言，一般都是采用冗余存储，冗余因子通常为3，也就是说，一份数据保存三份副本。所以 ，dfs.replication的值还是设置为 2-->
+		<value>2</value>
+	</property>
+	<property>
+		<name>dfs.namenode.name.dir</name>
+		<value>/usr/local/hadoop/tmp/dfs/name</value>
+	</property>
+	<property>
+		<name>dfs.datanode.data.dir</name>
+		<value>/usr/local/hadoop/tmp/dfs/data</value>
+	</property>
+	<!-- 2nn web端访问地址，一般放在另外一台从机上-->
+	<property>
+		<name>dfs.namenode.secondary.http-address</name>
+		<value>worker1:9868</value>
+	</property>
+	<!-- 一般以上配置即可，其他默认 -->
+	<!-- nn web端访问地址-->
+	<property>
+		<name>dfs.namenode.http-address</name>
+		<value>master:9870</value>
+	</property>
+	<property>
+		<name>dfs.http.address</name>
+		<value>master:9870</value>
+	</property>
+	<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address -->
+	<!-- worker中要改主机名为worker的hostname -->
+	<property>
+		<name>dfs.datanode.address</name>
+		<value>master:9866</value>
+	</property>
+	<property>
+		<name>dfs.datanode.ipc.address</name>
+		<value>master:9867</value>
+	</property>
+	<property>
+		<name>dfs.datanode.http.address</name>
+		<value>master:9864</value>
+	</property>
 </configuration>
 ```
 
@@ -178,40 +175,40 @@ worker2
 
 ``` xml
 <configuration>
-    <property>
-        <name>mapreduce.framework.name</name>
-        <value>yarn</value>
-    </property>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
 	<!-- 3.4以上版本必须如下配置 -->
 	<property>
-  <name>yarn.app.mapreduce.am.env</name>
-  <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
-</property>
-<property>
-  <name>mapreduce.map.env</name>
-  <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
-</property>
-<property>
-  <name>mapreduce.reduce.env</name>
-  <value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
-</property>
-<!-- 如果mapreduce任务报内存错误，需加入如下参数，具体数值视情况而定 -->
-<property>
-  <name>mapreduce.map.memory.mb</name>
-  <value>1024</value>
-</property>
-<property>
-  <name>mapreduce.map.java.opts</name>
-  <value>-Xmx512m</value>
-</property>
-<property>
-  <name>mapreduce.reduce.memory.mb</name>
-  <value>1024</value>
-</property>
-<property>
-  <name>mapreduce.reduce.java.opts</name>
-  <value>-Xmx512m</value>
-</property>
+		<name>yarn.app.mapreduce.am.env</name>
+		<value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+	</property>
+	<property>
+		<name>mapreduce.map.env</name>
+		<value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+	</property>
+	<property>
+		<name>mapreduce.reduce.env</name>
+		<value>HADOOP_MAPRED_HOME=/usr/local/hadoop</value>
+	</property>
+	<!-- 如果mapreduce任务报内存错误，需加入如下参数，具体数值视情况而定 -->
+	<property>
+		<name>mapreduce.map.memory.mb</name>
+		<value>1024</value>
+	</property>
+	<property>
+		<name>mapreduce.map.java.opts</name>
+		<value>-Xmx512m</value>
+	</property>
+	<property>
+		<name>mapreduce.reduce.memory.mb</name>
+		<value>1024</value>
+	</property>
+	<property>
+		<name>mapreduce.reduce.java.opts</name>
+		<value>-Xmx512m</value>
+	</property>
 </configuration>
 ```
 
@@ -224,63 +221,60 @@ worker2
 ``` xml
 <configuration>
 	<property>
-        <name>yarn.resourcemanager.hostname</name>
-        <value>master</value>
-     </property>
-     <property>
-         <name>yarn.nodemanager.aux-services</name>
-         <value>mapreduce_shuffle</value>
-     </property> 
-	 <!-- mapreduce任务内存不足时，视情况加入如下配置 -->
-	 <property>
-  <name>yarn.nodemanager.vmem-pmem-ratio</name>
-  <value>4</value>
-</property>
-	 
-	 <!-- 一般以上配置即可，其他默认 -->
-     <property>
-        <name>yarn.nodemanager.resource.memory-mb</name>
-        <value>1024</value>
-     </property>
-	 
-     <property> 	
-         <name>yarn.resourcemanager.address</name> 	
-         <value>master:8032</value>     
-     </property>     
-     <property>         
-         <name>yarn.resourcemanager.scheduler.address</name>         
-         <value>master:8030</value>     
-     </property>     
-     <property>         
-         <name>yarn.resourcemanager.resource-master.address</name>         
-         <value>master:8035</value>     
-     </property>     
-     <property>         
-         <name>yarn.resourcemanager.admin.address</name>         
-         <value>master:8033</value>     
-     </property>     
-     <property>         
-         <name>yarn.resourcemanager.webapp.address</name>         
-         <value>master:8088</value>     
-     </property>
-
-	 <!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address -->
-	 <!-- worker中要改主机名为worker的hostname -->
-	 <!-- localizer IPC -->
-	 <property>         
-         <name>yarn.nodemanager.localizer.address</name>         
-         <value>master:8040</value>     
-     </property>
-	 <!-- http服务端口 -->
-	 <property>         
-         <name>yarn.nodemanager.webapp.address</name>         
-         <value>master:8042</value>     
-     </property>
-	 <!-- NM中container manager的端口 -->
-	 <property>         
-         <name>yarn.nodemanager.address</name> 	 
-         <value>master:8041</value>     
-     </property>	 
+		<name>yarn.resourcemanager.hostname</name>
+		<value>master</value>
+	</property>
+	<property>
+		<name>yarn.nodemanager.aux-services</name>
+		<value>mapreduce_shuffle</value>
+	</property>
+	<!-- mapreduce任务内存不足时，视情况加入如下配置 -->
+	<property>
+		<name>yarn.nodemanager.vmem-pmem-ratio</name>
+		<value>4</value>
+	</property>
+	<!-- 一般以上配置即可，其他默认 -->
+	<property>
+		<name>yarn.nodemanager.resource.memory-mb</name>
+		<value>1024</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.address</name>
+		<value>master:8032</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.scheduler.address</name>
+		<value>master:8030</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.resource-master.address</name>
+		<value>master:8035</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.admin.address</name>
+		<value>master:8033</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.webapp.address</name>
+		<value>master:8088</value>
+	</property>
+	<!-- 如下3项如不设置，会报错： java.net.BindException: Cannot assign requested address -->
+	<!-- worker中要改主机名为worker的hostname -->
+	<!-- localizer IPC -->
+	<property>
+		<name>yarn.nodemanager.localizer.address</name>
+		<value>master:8040</value>
+	</property>
+	<!-- http服务端口 -->
+	<property>
+		<name>yarn.nodemanager.webapp.address</name>
+		<value>master:8042</value>
+	</property>
+	<!-- NM中container manager的端口 -->
+	<property>
+		<name>yarn.nodemanager.address</name>
+		<value>master:8041</value>
+	</property>
 </configuration>
 ```
 
@@ -357,36 +351,36 @@ export HBASE_MANAGES_ZK=false
 export HBASE_DISABLE_HADOOP_CLASSPATH_LOOKUP=true
 # hbase-site.xml
 <property>
-    <!-- Hbase Web UI 登录 -->
-    <name>hbase.master.info.port</name>
-    <value>60010</value>
-  </property>
-  <property>
-    <name>hbase.tmp.dir</name>
-    <value>/usr/local/hbase/tmp</value>
-  </property>
-  <property>
-    <name>hbase.unsafe.stream.capability.enforce</name>
-    <value>false</value>
-  </property>
-  <property>
-    <!-- Hbase写入数据的目录 -->
-    <name>hbase.rootdir</name>
-    <value>hdfs://hadoop01:9000/hbase</value>
-  </property>
-  <property>
-    <name>hbase.cluster.distributed</name>
-    <value>true</value>
-  </property>
-  <property>
-    <!-- list of zookeeper -->
-<name>hbase.zookeeper.quorum</name>
-<value>hadoop01,hadoop02,hadoop03</value>
+	<!-- Hbase Web UI 登录 -->
+	<name>hbase.master.info.port</name>
+	<value>60010</value>
 </property>
-  <property>
-    <!--zookooper配置、日志等的存储位置 -->
-<name>hbase.zookeeper.property.dataDir</name>
-<value>/usr/local/hbase/zookeeper</value>
+<property>
+	<name>hbase.tmp.dir</name>
+	<value>/usr/local/hbase/tmp</value>
+</property>
+<property>
+	<name>hbase.unsafe.stream.capability.enforce</name>
+	<value>false</value>
+</property>
+<property>
+	<!-- Hbase写入数据的目录 -->
+	<name>hbase.rootdir</name>
+	<value>hdfs://hadoop01:9000/hbase</value>
+</property>
+<property>
+	<name>hbase.cluster.distributed</name>
+	<value>true</value>
+</property>
+<property>
+	<!-- list of zookeeper -->
+	<name>hbase.zookeeper.quorum</name>
+	<value>hadoop01,hadoop02,hadoop03</value>
+</property>
+<property>
+	<!--zookooper配置、日志等的存储位置 -->
+	<name>hbase.zookeeper.property.dataDir</name>
+	<value>/usr/local/hbase/zookeeper</value>
 </property>
 # regionservers
 hadoop01
@@ -409,35 +403,39 @@ export HIVE_CONF_DIR=/usr/local/hive/conf
 [hadoop@hadoop01 conf]$ cp hive-default.xml.template hive-default.xml
 [hadoop@hadoop01 conf]$ cp hive-env.sh.template hive-env.sh
 [hadoop@hadoop01 conf]$ vi hive-env.sh
-export HADOOP_HEAPSIZE=204
+export HADOOP_HOME=/usr/local/hadoop/
+export HIVE_CONF_DIR=/usr/local/apache-hive-3.1.3-bin/conf
+export HIVE_AUX_JARS_PATH=/usr/local/apache-hive-3.1.3-bin/lib
+export HADOOP_HEAPSIZE=1024
+
 [hadoop@hadoop01 conf]$ vi hive-site.xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
-  <property>
-    <name>javax.jdo.option.ConnectionURL</name>
-<value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
-   <description>JDBC connect string for a JDBC metastore</description>
-  </property>
-  <property>
-    <name>javax.jdo.option.ConnectionDriverName</name>
-    <value>com.mysql.jdbc.Driver</value>
-    <description>Driver class name for a JDBC metastore</description>
-  </property>
-  <property>
-    <name>javax.jdo.option.ConnectionUserName</name>
-    <value>hive</value>
-    <description>username to use against metastore database</description>
-  </property>
-  <property>
-    <name>javax.jdo.option.ConnectionPassword</name>
-    <value>hive</value>
-    <description>password to use against metastore database</description>
-  </property>
-  <property>
-<name>hive.server2.enable.doAs</name>
-<value>false</value>
-  </property>
+	<property>
+		<name>javax.jdo.option.ConnectionURL</name>
+		<value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8</value>
+		<description>JDBC connect string for a JDBC metastore</description>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionDriverName</name>
+		<value>com.mysql.jdbc.Driver</value>
+		<description>Driver class name for a JDBC metastore</description>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionUserName</name>
+		<value>hive</value>
+		<description>username to use against metastore database</description>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionPassword</name>
+		<value>hive</value>
+		<description>password to use against metastore database</description>
+	</property>
+	<property>
+		<name>hive.server2.enable.doAs</name>
+		<value>false</value>
+	</property>
 </configuration>
 
 [hadoop@hadoop01 ~]$ wget https://mirrors.aliyun.com/mysql/Connector-J/mysql-connector-java-5.1.48.tar.gz
