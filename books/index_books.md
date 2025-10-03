@@ -1,2 +1,3 @@
 ### 书籍
-* [wlswn]（wlswn.html）
+* [wlswn]（wlswn.txt）
+* [wedh]（wedh.txt）
