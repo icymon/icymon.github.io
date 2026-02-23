@@ -37,6 +37,8 @@
 
 * [Ubuntu22.04 初始化配置](ubuntu2204init.md)
 
+* [Ubuntu24.04 初始化配置](ubuntu2404init.md)
+
 * [vc_redist](https://learn.microsoft.com/zh-cn/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 
 * [VMware安装增强工具](VMware安装增强工具.md)
