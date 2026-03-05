@@ -180,3 +180,7 @@ HandleLidSwitchExternalPower=lock
 HandleLidSwitchDocked=lock
 
 ```
+
+## 18、美化锁屏
+
+
