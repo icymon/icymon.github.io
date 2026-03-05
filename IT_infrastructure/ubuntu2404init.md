@@ -32,19 +32,21 @@ sudo apt install libpciaccess0 libtasn1-6
 sudo cp /etc/apt/sources.list.d/ubuntu.sources /etc/apt/sources.list.d/ubuntu.sources.bak
 sudo cp ubuntu.sources /etc/apt/sources.list.d/
 
+Types: deb
+URIs: https://mirrors.ustc.edu.cn/ubuntu
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: https://mirrors.ustc.edu.cn/ubuntu
+Suites: noble-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
 ```
 
-> Types: deb
-> URIs: https://mirrors.ustc.edu.cn/ubuntu
-> Suites: noble noble-updates noble-backports
-> Components: main restricted universe multiverse
-> Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-> 
-> Types: deb
-> URIs: https://mirrors.ustc.edu.cn/ubuntu
-> Suites: noble-security
-> Components: main restricted universe multiverse
-> Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
 
 ## 4、安装谷歌浏览器
 
@@ -181,6 +183,5 @@ HandleLidSwitchDocked=lock
 
 ```
 
-## 18、美化锁屏
 
 
