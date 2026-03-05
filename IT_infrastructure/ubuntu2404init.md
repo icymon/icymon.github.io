@@ -183,5 +183,10 @@ HandleLidSwitchDocked=lock
 
 ```
 
+## 18、文件查找和删除、复制操作
 
+``` shell
 
+$ sudo find / -name *virtualbox* -exec rm -rf {} \;
+$ sudo find /mydata -name *.iso -exec cp {} /home/ \;
+```
