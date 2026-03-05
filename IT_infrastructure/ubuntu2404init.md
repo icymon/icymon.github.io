@@ -3,11 +3,16 @@
 * 参考 [ubuntu下触摸板点击无效的解决方案](https://www.cnblogs.com/kukudi/p/17345128.html)
 
 ``` shell
+# 不一定是40开头
 sudo vi /usr/share/X11/xorg.conf.d/40-libinput.conf
 # 在Identifier "libinput touchpad catchall"中加上：
+# 启用触摸板点击，就是轻敲触摸板是点击。
 Option "Tapping" "on"
+# 启用自然滚动，就是水果那个自然滚动。
 Option "NaturalScrolling" "true"
+# 左右键点击方式看手指而不是区域，单指左键双指右键，三指中键。
 Option "ClickMethod" "clickfinger"
+# 打字的时候禁用触摸板，算是变相防止误触。
 Option "DisableWhileTyping" "True"
 ```
 ## 2、安装多媒体支持
