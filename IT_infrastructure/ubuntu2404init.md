@@ -152,3 +152,26 @@ $ ls -la /dev/disk/by-id
 # 写入fstab
 /dev/disk/by-id/xxxxxxxxxxxxxx-part1	/data	ext4	defaults	0	0
 ```
+
+## 16、【检测到系统程序错误】弹框
+
+``` shell
+# 
+$ sudo vi /etc/default/apport
+
+# 将enabled由1改为0，关闭弹框提醒
+```
+
+## 17、笔记本合上盖子由休眠改为锁屏
+
+``` shell
+$ sudo vi /etc/systemd/logind.conf
+
+#HandleLidSwitch=suspend
+HandleLidSwitch=lock
+#HandleLidSwitchExternalPower=suspend
+HandleLidSwitchExternalPower=lock
+#HandleLidSwitchDocked=ignore
+HandleLidSwitchDocked=lock
+
+```
