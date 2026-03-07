@@ -190,3 +190,20 @@ HandleLidSwitchDocked=lock
 $ sudo find / -name *virtualbox* -exec rm -rf {} \;
 $ sudo find /mydata -name *.iso -exec cp {} /home/ \;
 ```
+## 19、安装阴历
+
+``` shell
+sudo apt-get install gir1.2-lunar*
+```
+
+## 20、安装python库
+
+``` shell
+
+$ sudo apt install python3-pkg-resources=68.1.2-2ubuntu1.2
+$ sudo apt install python3-setuptools=68.1.2-2ubuntu1.2
+$ sudo apt install python3-pip
+$ sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
+$ pip3 install pymysql PyPDF2 numpy pandas xlrd matplotlib pillow wordcloud imageio jieba snownlp -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+```
