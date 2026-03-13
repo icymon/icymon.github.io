@@ -1,4 +1,4 @@
-# ubuntu 24.04 初始化配置
+# Debian 13 初始化配置
 ## 1、配置触摸板右击失效问题
 * 参考 [(救命)Kali Linux或者其他linux系统的触控板右键按下没反应，失效的解决办法](https://blog.csdn.net/2202_75762088/article/details/138037918)
 
