@@ -21,6 +21,8 @@
 
 * [Debian 11 初始化配置](debian11init.md)
 
+* [Debian 13 初始化配置](debian13init.md)
+
 * [Linux安装Hadoop集群](Linux安装Hadoop集群.md)
 
 * [Linux安装MySQL](Linux安装MySQL.md)
