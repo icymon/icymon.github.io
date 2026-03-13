@@ -14,20 +14,24 @@ sudo apt install libpciaccess0 libtasn1-6
 
 ```
 
-## 3、配置中科大源
-[debian 中科大源](https://cmcc.mirrors.ustc.edu.cn/help/debian.html)
+## 3、配置清华源
+[debian 清华源](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)
 
 ``` shell
 # /etc/apt/sources.list
-# 默认注释了源码仓库，如有需要可自行取消注释
-deb http://mirrors.ustc.edu.cn/debian trixie main contrib non-free non-free-firmware
-# deb-src http://mirrors.ustc.edu.cn/debian trixie main contrib non-free non-free-firmware
-deb http://mirrors.ustc.edu.cn/debian trixie-updates main contrib non-free non-free-firmware
-# deb-src http://mirrors.ustc.edu.cn/debian trixie-updates main contrib non-free non-free-firmware
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie main contrib non-free non-free-firmware
 
-# backports 软件源，请按需启用
-# deb http://mirrors.ustc.edu.cn/debian trixie-backports main contrib non-free non-free-firmware
-# deb-src http://mirrors.ustc.edu.cn/debian trixie-backports main contrib non-free non-free-firmware
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-updates main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-updates main contrib non-free non-free-firmware
+
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-backports main contrib non-free non-free-firmware
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ trixie-backports main contrib non-free non-free-firmware
+
+# 以下安全更新软件源包含了官方源与镜像站配置，如有需要可自行修改注释切换
+deb https://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+# deb-src https://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
 
 ```
 
@@ -204,5 +208,14 @@ $ sudo apt install python3-setuptools=68.1.2-2ubuntu1.2
 $ sudo apt install python3-pip
 $ sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
 $ pip3 install pymysql PyPDF2 numpy pandas xlrd matplotlib pillow wordcloud imageio jieba snownlp -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+```
+## 20、安装VirtualBox
+* AMD-V is being used by another hypervisor (VERR_SVM_IN_USE).
+
+``` shell
+sudo vi /etc/modprobe.d/blacklist.conf
+blacklist kvm
+blacklist kvm_amd
 
 ```
