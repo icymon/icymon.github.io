@@ -202,12 +202,10 @@ sudo apt-get install gir1.2-lunar*
 ## 20、安装python库
 
 ``` shell
-
-$ sudo apt install python3-pkg-resources=68.1.2-2ubuntu1.2
-$ sudo apt install python3-setuptools=68.1.2-2ubuntu1.2
-$ sudo apt install python3-pip
-$ sudo mv /usr/lib/python3.12/EXTERNALLY-MANAGED /usr/lib/python3.12/EXTERNALLY-MANAGED.bak
-$ pip3 install pymysql PyPDF2 numpy pandas xlrd matplotlib pillow wordcloud imageio jieba snownlp -i https://pypi.tuna.tsinghua.edu.cn/simple
+$ sudo apt install pip
+$ sudo mv /usr/lib/python3.13/EXTERNALLY-MANAGED /usr/lib/python3.13/EXTERNALLY-MANAGED.bak
+# 不要加sudo，安装在本用户下
+$ pip install pymysql PyPDF2 numpy pandas xlrd matplotlib pillow wordcloud imageio jieba snownlp -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ```
 ## 20、安装VirtualBox
